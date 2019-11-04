@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Test from "./testItem";
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import fetchDataAction from './fetchData';
 
 class App extends React.Component{
 
@@ -9,60 +9,51 @@ class App extends React.Component{
     super();
 
     this.state = {
-      data: null,
-      img: null,
-      testTitle: '',
-      task: []
+
     }
 
   }
 
   componentDidMount() {
-    fetch('/api')
-        .then(res => res.json())
-        .then(res => {
-          this.setState({
-            data: res,
-            img: res.header.logo,
-            testTitle: res.header.title,
-            task: res.task.data
-          })
-        })
-
+    const { fetchData } = this.props;
+    fetchData();
   }
 
+
   render() {
-    const { testTitle, data, img, task } = this.state;
-    console.log(data, '-----------')
-    console.log(task, '-----------')
+    const { pending, error, tasks } = this.props;
+
+    if(pending) return <p>Загрузка</p>;
+    if(error) return <p>{error}</p>;
+
     return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <img src={img} alt=''/>
-            <div className="wrap">
-              {
-                task.map(({text, img}) => {
-                  return <Test key={img} text={text} img={img} />
-                })
-              }
-            </div>
-            <h2>{testTitle}</h2>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
+        <div className="wrapper">
+          {
+            tasks.map(({id, text, img}) => {
+              return <div key={id}>
+                <img alt='pic' src={img}/>
+                <p>{text}</p>
+              </div>
+            })
+          }
+
         </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  error: state.error,
+  pending: state.pending,
+  tasks: state.data.task.data
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchData: fetchDataAction
+}, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App );
+
