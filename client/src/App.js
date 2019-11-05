@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
+import Test from "./test";
 
 class App extends React.Component{
 
@@ -11,7 +12,6 @@ class App extends React.Component{
     this.state = {
 
     }
-
   }
 
   componentDidMount() {
@@ -28,6 +28,8 @@ class App extends React.Component{
 
     return (
         <div className="wrapper">
+
+          <Test/>
           {
             tasks.map(({id, text, img}) => {
               return <div key={id}>
@@ -36,7 +38,6 @@ class App extends React.Component{
               </div>
             })
           }
-
         </div>
     );
   }
@@ -55,5 +56,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(App );
+)(App);
 

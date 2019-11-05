@@ -6,3 +6,6 @@
    http://localhost:5000/api и увидеть информацию, с http://localhost:3000 - видно не будет. Чтобы 
    с http://localhost:5000 было видно ваш сайт, нужно сбилдить приложение с помощью команды npm run build
    
+   
+*** Макет
+https://www.figma.com/file/IctmyEcNln7qE6zWPjVr3K/ok_ua_index?node-id=1%3A5   
