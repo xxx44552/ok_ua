@@ -221,6 +221,54 @@ app.get('/api/teem/:id', function (req, res) {
 
 });
 
+
+//Edit social block
+app.put("/api", function(req, res){
+
+  if(!req.body) return res.sendStatus(400);
+
+  var file = fs.readFileSync("../data/data.json", "utf8");
+  var data = JSON.parse(file);
+
+  var fb = req.body.fb;
+  var insta = req.body.insta;
+  var youtube = req.body.youtube;
+  var tel = req.body.tel;
+  var email = req.body.email;
+  var headerText = req.body.headerText;
+  var headerTitle = req.body.headerTitle;
+
+
+  if(fb) {
+    data.social.fb = fb;
+  }
+  if(insta) {
+    data.social.insta = insta;
+  }
+  if(youtube) {
+    data.social.youtube = youtube;
+  }
+  if(tel) {
+    data.tel = tel;
+  }
+  if(email) {
+    data.email = email;
+  }
+  if(headerText) {
+    data.header.text = headerText;
+  }
+  if(headerTitle) {
+    data.header.title = headerTitle;
+  }
+
+
+  var dataR = JSON.stringify(data);
+  fs.writeFileSync("../data/data.json", dataR);
+
+  res.send(dataR);
+
+});
+
 app.get("/*", function(req, res){
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
-import Login from './components/login/login'
+import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
 
@@ -33,7 +33,7 @@ class App extends React.Component{
     return (
       <BrowserRouter>
         <Route exact={true} path='/login' render={()=>
-            <Login update={this.update}/>
+            <Index update={this.update}/>
         }/>
         <Route exact={true} path='/admin' render={()=>
             <Admin />
