@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
-import Login from './components/login'
+import Login from './components/login/login'
+import Admin from './components/admin'
 import Test from "./test";
 
 
@@ -35,7 +36,7 @@ class App extends React.Component{
             <Login update={this.update}/>
         }/>
         <Route exact={true} path='/admin' render={()=>
-            <h1>Админка</h1>
+            <Admin />
         }/>
         <Route exact={true} path='/' render={()=>
             <div className="wrapper">
