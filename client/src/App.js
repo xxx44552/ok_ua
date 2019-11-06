@@ -2,9 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
+import { BrowserRouter, Route } from "react-router-dom";
+import Index from './components/login'
+import Admin from './components/admin'
 import Test from "./test";
 import Header from './components/header/Header'
 import './commonStyles/commonStyles.scss'
+
 
 class App extends React.Component{
 
@@ -30,18 +34,29 @@ class App extends React.Component{
     if(error) return <p>{error}</p>;
 
     return (
-        <div className="container-main">
-          <Header/>
-          <Test/>
-          {
-            tasks.map(({id, text, img}) => {
-              return <div key={id}>
-                <img alt='pic' src={img}/>
-                <p>{text}</p>
-              </div>
-            })
-          }
-        </div>
+
+      <BrowserRouter>
+        <Route exact={true} path='/login' render={()=>
+            <Index update={this.update}/>
+        }/>
+        <Route exact={true} path='/admin' render={()=>
+            <Admin />
+        }/>
+        <Route exact={true} path='/' render={()=>
+            <div className="container-main">
+              <Header/>
+              <Test/>
+              {
+                tasks.map(({id, text, img}) => {
+                  return <div key={id}>
+                    <img alt='pic' src={img}/>
+                    <p>{text}</p>
+                  </div>
+                })
+              }
+            </div>
+        }/>
+      </BrowserRouter>
     );
   }
 }

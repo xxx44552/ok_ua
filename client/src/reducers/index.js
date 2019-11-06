@@ -7,7 +7,6 @@ let initialState = {
     tel: '',
     header: {
       logo: '',
-      tel: '',
       title: '',
       text: ''
     },

@@ -2,6 +2,9 @@ const express = require("express");
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require("body-parser");
+const passport = require('passport');
+var session = require('express-session');
+const FileStore = require('session-file-store')(session);
 
 const config = require('./config');
 
@@ -15,6 +18,62 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(express.static(path.join(__dirname, '../data')));
 
 
+
+//Authorization *************************
+
+app.use(
+    session({
+      secret: 'hghtyNN23h',
+      store: new FileStore(),
+      cookie: {
+        path: '/',
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000,
+      },
+      resave: false,
+      saveUninitialized: false,
+    })
+);
+
+require('./passport');
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.post('/login', (req, res, next) => {
+  passport.authenticate('local', function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.redirect('/login');
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect('/admin');
+    });
+  })(req, res, next);
+});
+
+const auth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    return res.redirect('/login');
+  }
+};
+
+app.get('/admin', auth, (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+app.get('/logout', (req, res) => {
+  req.logOut();
+  res.redirect('/');
+});
+//End authorization *************************
 
 app.get("/api", function(req, res){
 
@@ -159,6 +218,54 @@ app.get('/api/teem/:id', function (req, res) {
   } else {
     res.status(404).send('Error')
   }
+
+});
+
+
+//Edit social block
+app.put("/api", function(req, res){
+
+  if(!req.body) return res.sendStatus(400);
+
+  var file = fs.readFileSync("../data/data.json", "utf8");
+  var data = JSON.parse(file);
+
+  var fb = req.body.fb;
+  var insta = req.body.insta;
+  var youtube = req.body.youtube;
+  var tel = req.body.tel;
+  var email = req.body.email;
+  var headerText = req.body.headerText;
+  var headerTitle = req.body.headerTitle;
+
+
+  if(fb) {
+    data.social.fb = fb;
+  }
+  if(insta) {
+    data.social.insta = insta;
+  }
+  if(youtube) {
+    data.social.youtube = youtube;
+  }
+  if(tel) {
+    data.tel = tel;
+  }
+  if(email) {
+    data.email = email;
+  }
+  if(headerText) {
+    data.header.text = headerText;
+  }
+  if(headerTitle) {
+    data.header.title = headerTitle;
+  }
+
+
+  var dataR = JSON.stringify(data);
+  fs.writeFileSync("../data/data.json", dataR);
+
+  res.send(dataR);
 
 });
 
