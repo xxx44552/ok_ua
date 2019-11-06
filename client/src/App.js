@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import Test from "./test";
+import Header from './components/header/Header'
+import './commonStyles/commonStyles.scss'
 
 class App extends React.Component{
 
@@ -17,7 +19,7 @@ class App extends React.Component{
   componentDidMount() {
     const { fetchData } = this.props;
     fetchData();
-    
+
   }
 
 
@@ -28,8 +30,8 @@ class App extends React.Component{
     if(error) return <p>{error}</p>;
 
     return (
-        <div className="wrapper">
-
+        <div className="container-main">
+          <Header/>
           <Test/>
           {
             tasks.map(({id, text, img}) => {
