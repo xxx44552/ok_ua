@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
+import { BrowserRouter, Route } from "react-router-dom";
+import Login from './components/login'
 import Test from "./test";
+
 
 class App extends React.Component{
 
@@ -27,18 +30,27 @@ class App extends React.Component{
     if(error) return <p>{error}</p>;
 
     return (
-        <div className="wrapper">
-
-          <Test/>
-          {
-            tasks.map(({id, text, img}) => {
-              return <div key={id}>
-                <img alt='pic' src={img}/>
-                <p>{text}</p>
-              </div>
-            })
-          }
-        </div>
+      <BrowserRouter>
+        <Route exact={true} path='/login' render={()=>
+            <Login update={this.update}/>
+        }/>
+        <Route exact={true} path='/admin' render={()=>
+            <h1>Админка</h1>
+        }/>
+        <Route exact={true} path='/' render={()=>
+            <div className="wrapper">
+              <Test/>
+              {
+                tasks.map(({id, text, img}) => {
+                  return <div key={id}>
+                    <img alt='pic' src={img}/>
+                    <p>{text}</p>
+                  </div>
+                })
+              }
+            </div>
+        }/>
+      </BrowserRouter>
     );
   }
 }

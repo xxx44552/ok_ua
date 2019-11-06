@@ -2,6 +2,9 @@ const express = require("express");
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require("body-parser");
+const passport = require('passport');
+var session = require('express-session');
+const FileStore = require('session-file-store')(session);
 
 const config = require('./config');
 
@@ -15,6 +18,62 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(express.static(path.join(__dirname, '../data')));
 
 
+
+//Authorization *************************
+
+app.use(
+    session({
+      secret: 'hghtyNN23h',
+      store: new FileStore(),
+      cookie: {
+        path: '/',
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000,
+      },
+      resave: false,
+      saveUninitialized: false,
+    })
+);
+
+require('./passport');
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.post('/login', (req, res, next) => {
+  passport.authenticate('local', function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.redirect('/login');
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect('/admin');
+    });
+  })(req, res, next);
+});
+
+const auth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    return res.redirect('/login');
+  }
+};
+
+app.get('/admin', auth, (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+app.get('/logout', (req, res) => {
+  req.logOut();
+  res.redirect('/');
+});
+//End authorization *************************
 
 app.get("/api", function(req, res){
 
