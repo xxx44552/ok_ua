@@ -222,7 +222,7 @@ app.get('/api/teem/:id', function (req, res) {
 });
 
 
-//Edit social block
+//Edit
 app.put("/api", function(req, res){
 
   if(!req.body) return res.sendStatus(400);

@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import './style.sass'
+import {setTel, setEmail} from "../../action";
+
 
 class Admin extends React.Component {
 
@@ -12,7 +14,6 @@ class Admin extends React.Component {
       fb: null,
       insta: null,
       youtube: null,
-      tel: null,
       email: null,
       headerTitle: null,
       headerText: null,
@@ -54,8 +55,8 @@ class Admin extends React.Component {
       fb: this.state.fb,
       insta: this.state.insta,
       youtube: this.state.youtube,
-      tel: this.state.tel,
-      email: this.state.email,
+      tel: this.props.formTel,
+      email: this.props.formEmail,
       headerTitle: this.state.headerTitle,
       headerText: this.state.headerText,
       headerLogo: this.state.headerLogo
@@ -81,12 +82,12 @@ class Admin extends React.Component {
             <h2>Tel</h2>
             <div>
               <label>Tel - </label>
-              <input onChange={this.changeValue} name='tel' type='text' defaultValue={tel}/>
+              <input onChange={(e)=>this.props.setTel(e.target.value)} name='tel' type='text' defaultValue={tel}/>
             </div>
             <h2>Email</h2>
             <div>
               <label>Email - </label>
-              <input onChange={this.changeValue} name='email' type='text' defaultValue={email}/>
+              <input onChange={(e)=>this.props.setEmail(e.target.value)} name='email' type='text' defaultValue={email}/>
             </div>
             <h2>Social</h2>
             <div>
@@ -118,21 +119,39 @@ class Admin extends React.Component {
             <hr />
             <input onChange={this.changeValue}  type='submit' value='Сохранить'/>
           </form>
+          <p>{this.props.formEmail}</p>
         </div>
       </>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  fb: state.data.social.fb,
+  insta: state.data.social.insta,
+  youtube: state.data.social.youtube,
+  tel: state.data.tel,
+  formTel: state.form.tel,
+  email: state.data.email,
+  formEmail: state.form.email,
+  headerTitle: state.data.header.title,
+  headerText: state.data.header.text,
+  headerLogo: state.data.header.logo
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setTel: (tel) => {
+      dispatch(setTel(tel))
+    },
+    setEmail: (email) => {
+      dispatch(setEmail(email))
+    }
+  }
+};
+
 export default connect(
-    state => ({
-      fb: state.data.social.fb,
-      insta: state.data.social.insta,
-      youtube: state.data.social.youtube,
-      tel: state.data.tel,
-      email: state.data.email,
-      headerTitle: state.data.header.title,
-      headerText: state.data.header.text,
-      headerLogo: state.data.header.logo
-    })
-)(Admin)
+    mapStateToProps,
+    mapDispatchToProps
+)(Admin);
+

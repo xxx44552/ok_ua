@@ -1,4 +1,37 @@
-import { FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR } from "../action";
+import { FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL } from "../action";
+
+let form = {
+  email: '',
+  tel: '',
+  header: {
+    logo: '',
+    title: '',
+    text: ''
+  },
+  task: {
+    title: '',
+    data: []
+  },
+  news: [],
+  youtube: [],
+  project: {
+    title: '',
+    big_img: '',
+    items: []
+  },
+  statistic: [],
+  teem: [],
+  map: {
+    title: '',
+    coordinates: ''
+  },
+  footer: {
+    logo: '',
+    address: ''
+  },
+  copy: '',
+  social: []
+}
 
 let initialState = {
   pending: false,
@@ -34,7 +67,8 @@ let initialState = {
     copy: '',
     social: []
   },
-  error: null
+  error: null,
+  form
 }
 
 export default function data(state = initialState, action) {
@@ -88,8 +122,24 @@ export default function data(state = initialState, action) {
         pending: false,
         error: action.error
       };
+    case SET_TEL:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          tel: action.tel
+        }
+      };
+    case SET_EMAIL:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          email: action.email
+        }
+      };
     default:
           return state;
   }
-}
 
+}
