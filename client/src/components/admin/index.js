@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import './style.sass'
-import {setTel, setEmail} from "../../action";
+import {setTel, setEmail, setSocialFb, setSocialInsta, setSocialYoutube} from "../../action";
 
 
 class Admin extends React.Component {
@@ -52,9 +52,9 @@ class Admin extends React.Component {
   changeData(e) {
     e.preventDefault();
     const form = {
-      fb: this.state.fb,
-      insta: this.state.insta,
-      youtube: this.state.youtube,
+      fb: this.props.formFb,
+      insta: this.props.formInsta,
+      youtube: this.props.formYoutube,
       tel: this.props.formTel,
       email: this.props.formEmail,
       headerTitle: this.state.headerTitle,
@@ -92,15 +92,15 @@ class Admin extends React.Component {
             <h2>Social</h2>
             <div>
               <label>FB - </label>
-              <input onChange={this.changeValue} name='fb' type='text' defaultValue={fb}/>
+              <input onChange={(e)=>this.props.setSocialFb(e.target.value)} name='fb' type='text' defaultValue={fb}/>
             </div>
             <div>
               <label>Insta - </label>
-              <input onChange={this.changeValue} name='insta' type='text' defaultValue={insta} />
+              <input onChange={(e)=>this.props.setSocialInsta(e.target.value)} name='insta' type='text' defaultValue={insta} />
             </div>
             <div>
               <label>Youtube - </label>
-              <input onChange={this.changeValue} name='youtube' type='text' defaultValue={youtube} />
+              <input onChange={(e)=>this.props.setSocialYoutube(e.target.value)} name='youtube' type='text' defaultValue={youtube} />
             </div>
             <h2>Header</h2>
             <div>
@@ -128,8 +128,11 @@ class Admin extends React.Component {
 
 const mapStateToProps = state => ({
   fb: state.data.social.fb,
+  formFb: state.form.social.fb,
   insta: state.data.social.insta,
+  formInsta: state.form.social.insta,
   youtube: state.data.social.youtube,
+  formYoutube: state.form.social.youtube,
   tel: state.data.tel,
   formTel: state.form.tel,
   email: state.data.email,
@@ -146,6 +149,15 @@ const mapDispatchToProps = dispatch => {
     },
     setEmail: (email) => {
       dispatch(setEmail(email))
+    },
+    setSocialFb: (fb) => {
+      dispatch(setSocialFb(fb))
+    },
+    setSocialInsta: (insta) => {
+      dispatch(setSocialInsta(insta))
+    },
+    setSocialYoutube: (youtube) => {
+      dispatch(setSocialYoutube(youtube))
     }
   }
 };

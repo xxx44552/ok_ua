@@ -1,4 +1,6 @@
-import { FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL } from "../action";
+import {
+  FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL,
+  SET_SOCIAL_FB, SET_SOCIAL_INSTA, SET_SOCIAL_YOUTUBE } from "../action";
 
 let form = {
   email: '',
@@ -31,7 +33,7 @@ let form = {
   },
   copy: '',
   social: []
-}
+};
 
 let initialState = {
   pending: false,
@@ -136,6 +138,39 @@ export default function data(state = initialState, action) {
         form: {
           ...state.form,
           email: action.email
+        }
+      };
+    case SET_SOCIAL_FB:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          social: {
+            ...state.form.social,
+            fb: action.fb
+          }
+        }
+      };
+    case SET_SOCIAL_INSTA:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          social: {
+            ...state.form.social,
+            insta: action.insta
+          }
+        }
+      };
+    case SET_SOCIAL_YOUTUBE:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          social: {
+            ...state.form.social,
+            youtube: action.youtube
+          }
         }
       };
     default:

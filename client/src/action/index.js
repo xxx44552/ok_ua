@@ -3,6 +3,9 @@ export const FETCH_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const FETCH_DATA_ERROR = 'GET_DATA_ERROR';
 export const SET_TEL = 'SET_TEL';
 export const SET_EMAIL = 'SET_EMAIL';
+export const SET_SOCIAL_FB = 'SET_SOCIAL_FB';
+export const SET_SOCIAL_INSTA = 'SET_SOCIAL_INSTA';
+export const SET_SOCIAL_YOUTUBE = 'SET_SOCIAL_YOUTUBE';
 
 export function fetchDataPending() {
   return {
@@ -37,3 +40,25 @@ export function setEmail(email) {
     email
   }
 }
+
+export function setSocialFb(fb) {
+  return {
+    type: SET_SOCIAL_FB,
+    fb
+  }
+}
+
+export function setSocialInsta(insta) {
+  return {
+    type: SET_SOCIAL_INSTA,
+    insta
+  }
+}
+
+export function setSocialYoutube(youtube) {
+  return {
+    type: SET_SOCIAL_YOUTUBE,
+    youtube
+  }
+}
+
