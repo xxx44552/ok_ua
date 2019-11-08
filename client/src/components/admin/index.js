@@ -44,7 +44,8 @@ class Admin extends React.Component {
       headerLogo: this.props.formHeaderLogo,
       headerLogoType: this.props.formHeaderLogoType,
       taskTitle: this.props.formTaskTitle,
-      taskData: this.props.formTaskData
+      taskData: this.props.formTaskData,
+      deleteTaskItem: this.props.deleteTaskItem
     }
     console.log(this.state.fb)
     fetch('/api', {
@@ -137,7 +138,8 @@ const mapStateToProps = state => ({
   formHeaderLogoType: state.form.header.logo_type,
   taskTitle: state.data.task.title,
   formTaskTitle: state.form.task.title,
-  formTaskData: state.form.task.data
+  formTaskData: state.form.task.data,
+  deleteTaskItem: state.form.task.deleteItem
 
 });
 

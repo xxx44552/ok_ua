@@ -85,16 +85,19 @@ function getImg(el, id, dir, typeImg, nameImg) {
   });
 }
 
-//удаление картинки
-function delPic(id, dir, fileName) {
+function delPic(dir, name) {
   fs.readdir(dir, (err, files) => {
     files.forEach((file) => {
-      let type = file.replace(/.+?\./g, '');
-      if(file == `${fileName}${id?id:""}.${type}`) {
-        fs.unlink(`${__dirname}/../data/${dir}/${file}`, (err) => {
-          if (err) console.log(err);
-          else console.log("del pic", file);
-        });
+      let img = file.match(name)
+      if(img) {
+        console.log(img.input)
+        if(file == img.input) {
+          console.log(file)
+          fs.unlink(`${dir}${file}`, (err) => {
+            if (err) console.log(err);
+            else console.log("del pic", file);
+          });
+        }
       }
     });
   });
@@ -268,6 +271,7 @@ app.put("/api", function(req, res){
   var headerLogoType = req.body.headerLogoType;
   var taskTitle = req.body.taskTitle;
   var taskData = req.body.taskData;
+  var deleteTaskItem = req.body.deleteTaskItem;
 
 
   if(fb) {
@@ -318,14 +322,10 @@ app.put("/api", function(req, res){
 
   if(taskData) {
 
-
-
     // находим максимальный id
     var taskId = Math.max.apply(Math,data.task.data.map(function(o){
       return o.id;
     }));
-
-
 
     for(let i = 0; i < taskData.length; i++) {
       taskId += +1;
@@ -334,10 +334,15 @@ app.put("/api", function(req, res){
         id: taskId,
         text: taskData[i].text,
         img: `img/task/img${taskId}.${taskData[i].imgType}`
-      }
+      };
       data.task.data.push(task)
       getImg(taskData[i].img, taskId, 'img/task/', taskData[i].imgType, 'img');
     }
+  }
+
+  if(deleteTaskItem) {
+    data.task.data = data.task.data.filter(el => el.id !== deleteTaskItem);
+    delPic('../data/img/task/', `img${deleteTaskItem}`)
   }
 
   var dataR = JSON.stringify(data);

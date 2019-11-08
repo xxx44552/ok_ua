@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  addTaskItem
+  addTaskItem,
+  deleteTaskItem
 } from "../../../action";
 import {connect} from "react-redux";
 
@@ -47,14 +48,17 @@ class TaskItems extends React.Component {
 
   render() {
     const {items} = this.props;
+    console.log(items)
     return (
       <React.Fragment>
         <div>
           {
             items.map(({id, text, img}) => {
               return <div key={text} className='admin-task'>
+                <p>ID: {id}</p>
                 <img src={img} alt=''/>
                 <p>{text}</p>
+                <div className='admin-btn' onClick={()=> this.props.deleteTaskItem(id)}>Удалить</div>
               </div>
             })
           }
@@ -63,7 +67,8 @@ class TaskItems extends React.Component {
         <input onChange={this.addFoto} type='file'/><br/>
         <div className='admin-btn' onClick={()=> {
           if(this.state.text && this.state.img && this.state.imgType) {
-            this.props.addTaskItem(this.state.text, this.state.img, this.state.imgType)
+
+            this.props.addTaskItem(this.state.text, this.state.img, this.state.imgType, items.length)
           }
         }}>Добавить задание</div>
       </React.Fragment>
@@ -72,13 +77,16 @@ class TaskItems extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.data.task.data.concat(state.form.task.data)
+  items: state.data.task.data
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTaskItem: (text, img, imgType) => {
-      dispatch(addTaskItem(text, img, imgType))
+    addTaskItem: (text, img, imgType, id) => {
+      dispatch(addTaskItem(text, img, imgType, id))
+    },
+    deleteTaskItem: (id) => {
+      dispatch(deleteTaskItem(id))
     },
   }
 };

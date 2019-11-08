@@ -12,7 +12,7 @@ export const SET_HEADER_TEXT = 'SET_HEADER_LOGO_TEXT';
 export const SET_HEADER_TITLE = 'SET_HEADER_TITLE';
 export const SET_TASK_TITLE = 'SET_TASK_TITLE';
 export const ADD_TASK_ITEM = 'ADD_TASK_ITEM';
-export const ADD_TASK_DATA = 'ADD_TASK_DATA';
+export const DELETE_TASK_ITEM = 'DELETE_TASK_ITEM';
 
 export function fetchDataPending() {
   return {
@@ -104,10 +104,11 @@ export function setTaskTitle(title) {
   }
 }
 
-export function addTaskItem(text, img, imgType) {
+export function addTaskItem(text, img, imgType, id) {
   return {
     type: ADD_TASK_ITEM,
     item: {
+      id: id,
       text: text,
       img: img,
       imgType: imgType
@@ -115,3 +116,9 @@ export function addTaskItem(text, img, imgType) {
   }
 }
 
+export function deleteTaskItem(id) {
+  return {
+    type: DELETE_TASK_ITEM,
+    id
+  }
+}

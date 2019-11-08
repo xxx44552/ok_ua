@@ -1,7 +1,7 @@
 import {
   FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL,
   SET_SOCIAL_FB, SET_SOCIAL_INSTA, SET_SOCIAL_YOUTUBE, SET_HEADER_LOGO, SET_HEADER_LOGO_TYPE, SET_HEADER_TEXT,
-  SET_HEADER_TITLE, SET_TASK_TITLE, ADD_TASK_ITEM
+  SET_HEADER_TITLE, SET_TASK_TITLE, ADD_TASK_ITEM, DELETE_TASK_ITEM
 } from "../action";
 
 let form = {
@@ -246,6 +246,35 @@ export default function data(state = initialState, action) {
                 ...state.form.task.data,
               action.item
             ]
+          }
+        },
+        data: {
+          ...state.data,
+          task: {
+            ...state.data.task,
+            data: [
+              ...state.data.task.data,
+              action.item
+            ]
+          }
+        }
+      };
+    case DELETE_TASK_ITEM:
+      let arr = state.data.task.data.filter(el=> el.id !== action.id)
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          task: {
+            ...state.data.task,
+            data: arr
+          }
+        },
+        form: {
+          ...state.form,
+          task: {
+            ...state.form.task,
+            deleteItem: action.id
           }
         }
       };
