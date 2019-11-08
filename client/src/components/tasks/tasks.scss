@@ -1,0 +1,95 @@
+.tasks-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 44px;
+    max-width: 1111px;
+
+    .task-title {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        /* identical to box height */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+
+        color: #00A3E6;
+    }
+
+    .task-list {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: inherit;
+        height: auto;
+        overflow: hidden;
+        justify-content: space-between;
+        margin-bottom: 46px;
+
+        .task {
+            display: flex;
+            width: 280px;
+            height: 70px;
+            justify-content: space-between;
+            margin: 11px 45px 11px 0 !important;
+        }
+
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+
+        .char-contrib {
+
+            width: 285px;
+            height: 51px;
+            background: #00A3E5;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 3px;
+            border: 0;
+            outline: 0 !important;
+        
+            &:hover {
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                cursor: pointer;
+            }
+
+        }
+        .signIn {
+
+            width: 285px;
+            height: 51px;
+            background: #FDC940;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 3px;
+            border: 0;
+            outline: 0 !important;
+        
+            &:hover {
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                cursor: pointer;
+            }
+
+        }
+        .help {
+
+            width: 285px;
+            height: 51px;
+            background: #FF621F;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 3px;
+            border: 0;
+            outline: 0 !important;
+        
+            &:hover {
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                cursor: pointer;
+            }
+
+        }
+    }
+}

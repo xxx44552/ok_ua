@@ -8,6 +8,8 @@ import Admin from './components/admin'
 import Test from "./test";
 import Header from './components/header/Header'
 import './commonStyles/commonStyles.scss'
+import MainInfo from './components/mainInfo/MainInfo'
+import Tasks from './components/tasks/Tasks';
 
 
 class App extends React.Component{
@@ -45,7 +47,10 @@ class App extends React.Component{
         <Route exact={true} path='/' render={()=>
             <div className="container-main">
               <Header/>
-              <Test/>
+              <MainInfo/>
+              <Tasks/>
+              
+              {/* <Test/>
               {
                 tasks.map(({id, text, img}) => {
                   return <div key={id}>
@@ -53,7 +58,7 @@ class App extends React.Component{
                     <p>{text}</p>
                   </div>
                 })
-              }
+              } */}
             </div>
         }/>
       </BrowserRouter>
