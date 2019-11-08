@@ -6,7 +6,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
-
+import Map from "./components/Map/Map";
+import OurTeam from './components//OurTeam/OurTeam';
 
 class App extends React.Component{
 
@@ -49,6 +50,9 @@ class App extends React.Component{
                   </div>
                 })
               }
+              <OurTeam/>
+              <Map/>
+
             </div>
         }/>
       </BrowserRouter>
