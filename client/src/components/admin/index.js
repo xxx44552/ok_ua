@@ -1,7 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
 import './style.sass'
-import {setTel, setEmail, setSocialFb, setSocialInsta, setSocialYoutube} from "../../action";
+import {
+  setTel, setEmail, setSocialFb, setSocialInsta, setSocialYoutube, setHeaderText, setHeaderTitle, setTaskTitle
+} from "../../action";
+import HeaderLogo from "./components/headerLogo";
+import TaskItems from "./components/taskItems";
 
 
 class Admin extends React.Component {
@@ -27,28 +31,6 @@ class Admin extends React.Component {
     })
   };
 
-  addFoto = (e, state) => {
-    let img = e.target.files;
-    if(img[0].type === 'image/jpeg' || img[0].type === 'image/png') {
-      this.setState({
-        [state]: img[0].type
-      })
-      let reader = new FileReader();
-      reader.readAsDataURL(img[0]);
-
-      reader.onload = (e) => {
-        this.setState({
-          error: '',
-          [state]: e.target.result
-        }, console.log(e.target.result))
-      }
-    }else {
-      this.setState({
-        error: 'Неверное расширение фото (jpeg, png)'
-      })
-    }
-  }
-
   changeData(e) {
     e.preventDefault();
     const form = {
@@ -57,9 +39,12 @@ class Admin extends React.Component {
       youtube: this.props.formYoutube,
       tel: this.props.formTel,
       email: this.props.formEmail,
-      headerTitle: this.state.headerTitle,
-      headerText: this.state.headerText,
-      headerLogo: this.state.headerLogo
+      headerTitle: this.props.formHeaderTitle,
+      headerText: this.props.formHeaderText,
+      headerLogo: this.props.formHeaderLogo,
+      headerLogoType: this.props.formHeaderLogoType,
+      taskTitle: this.props.formTaskTitle,
+      taskData: this.props.formTaskData
     }
     console.log(this.state.fb)
     fetch('/api', {
@@ -74,7 +59,7 @@ class Admin extends React.Component {
   }
 
   render() {
-    const { fb, insta, youtube, tel, email, headerTitle, headerText, headerLogo } = this.props;
+    const { fb, insta, youtube, tel, email, headerTitle, headerText, taskTitle } = this.props;
     return (
       <>
         <div className="admin">
@@ -105,21 +90,27 @@ class Admin extends React.Component {
             <h2>Header</h2>
             <div>
               <label>Header title - </label>
-              <input onChange={this.changeValue} name='headerTitle' type='text' defaultValue={headerTitle} />
+              <input onChange={(e)=>this.props.setHeaderTitle(e.target.value)} name='headerTitle' type='text' defaultValue={headerTitle} />
             </div>
             <div>
               <label>Header text - </label>
-              <textarea onChange={this.changeValue} name='headerText' defaultValue={headerText}></textarea>
+              <textarea onChange={(e)=>this.props.setHeaderText(e.target.value)} name='headerText' defaultValue={headerText}></textarea>
             </div>
             <div>
               <p>Header logo</p>
-              <img alt='pic' src={headerLogo}/>
-              <input onChange={this.addFoto} type='file'/>
+              <HeaderLogo/>
+            </div>
+            <h2>Task</h2>
+            <div>
+              <div>
+                <label>Task title - </label>
+                <input onChange={(e)=>this.props.setTaskTitle(e.target.value)} name='headerTitle' type='text' defaultValue={taskTitle} />
+                <TaskItems/>
+              </div>
             </div>
             <hr />
             <input onChange={this.changeValue}  type='submit' value='Сохранить'/>
           </form>
-          <p>{this.props.formEmail}</p>
         </div>
       </>
     )
@@ -138,8 +129,16 @@ const mapStateToProps = state => ({
   email: state.data.email,
   formEmail: state.form.email,
   headerTitle: state.data.header.title,
+  formHeaderTitle: state.form.header.title,
   headerText: state.data.header.text,
-  headerLogo: state.data.header.logo
+  formHeaderText: state.form.header.text,
+  headerLogo: state.data.header.logo,
+  formHeaderLogo: state.form.header.logo,
+  formHeaderLogoType: state.form.header.logo_type,
+  taskTitle: state.data.task.title,
+  formTaskTitle: state.form.task.title,
+  formTaskData: state.form.task.data
+
 });
 
 const mapDispatchToProps = dispatch => {
@@ -158,7 +157,16 @@ const mapDispatchToProps = dispatch => {
     },
     setSocialYoutube: (youtube) => {
       dispatch(setSocialYoutube(youtube))
-    }
+    },
+    setHeaderTitle: (title) => {
+      dispatch(setHeaderTitle(title))
+    },
+    setHeaderText: (text) => {
+      dispatch(setHeaderText(text))
+    },
+    setTaskTitle: (title) => {
+      dispatch(setTaskTitle(title))
+    },
   }
 };
 

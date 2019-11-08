@@ -75,6 +75,31 @@ app.get('/logout', (req, res) => {
 });
 //End authorization *************************
 
+//загрузка на сервер картинки
+function getImg(el, id, dir, typeImg, nameImg) {
+  var imageData = el.replace(/^data:image\/\w+;base64,/, '');
+  fs.writeFile(`${__dirname}/../data/${dir}/${nameImg}${id?id:""}.${typeImg}`, imageData, {encoding: 'base64'}, function(err){
+    if(err) {
+      console.error(err)
+    }
+  });
+}
+
+//удаление картинки
+function delPic(id, dir, fileName) {
+  fs.readdir(dir, (err, files) => {
+    files.forEach((file) => {
+      let type = file.replace(/.+?\./g, '');
+      if(file == `${fileName}${id?id:""}.${type}`) {
+        fs.unlink(`${__dirname}/../data/${dir}/${file}`, (err) => {
+          if (err) console.log(err);
+          else console.log("del pic", file);
+        });
+      }
+    });
+  });
+}
+
 app.get("/api", function(req, res){
 
   var file = fs.readFileSync("../data/data.json", "utf8");
@@ -230,6 +255,8 @@ app.put("/api", function(req, res){
   var file = fs.readFileSync("../data/data.json", "utf8");
   var data = JSON.parse(file);
 
+
+
   var fb = req.body.fb;
   var insta = req.body.insta;
   var youtube = req.body.youtube;
@@ -237,6 +264,10 @@ app.put("/api", function(req, res){
   var email = req.body.email;
   var headerText = req.body.headerText;
   var headerTitle = req.body.headerTitle;
+  var headerLogo = req.body.headerLogo;
+  var headerLogoType = req.body.headerLogoType;
+  var taskTitle = req.body.taskTitle;
+  var taskData = req.body.taskData;
 
 
   if(fb) {
@@ -260,7 +291,54 @@ app.put("/api", function(req, res){
   if(headerTitle) {
     data.header.title = headerTitle;
   }
+  if(headerLogo) {
+    fs.readdir('../data/img', (err, files) => {
+        files.forEach((file) => {
+          let img = file.match(/header_logo/)
+          if(img) {
+            console.log(img.input)
+            if(file == img.input) {
+              console.log(file)
+              fs.unlink(`${__dirname}/../data/img/${file}`, (err) => {
+                if (err) console.log(err);
+                else console.log("del pic", file);
+              });
+            }
+          }
 
+        });
+        getImg(headerLogo, null, 'img', headerLogoType, 'header_logo');
+      });
+
+      data.header.logo = `img/header_logo.${headerLogoType}`
+  }
+  if(taskTitle) {
+    data.task.title = taskTitle;
+  }
+
+  if(taskData) {
+
+
+
+    // находим максимальный id
+    var taskId = Math.max.apply(Math,data.task.data.map(function(o){
+      return o.id;
+    }));
+
+
+
+    for(let i = 0; i < taskData.length; i++) {
+      taskId += +1;
+
+      var task = {
+        id: taskId,
+        text: taskData[i].text,
+        img: `img/task/img${taskId}.${taskData[i].imgType}`
+      }
+      data.task.data.push(task)
+      getImg(taskData[i].img, taskId, 'img/task/', taskData[i].imgType, 'img');
+    }
+  }
 
   var dataR = JSON.stringify(data);
   fs.writeFileSync("../data/data.json", dataR);

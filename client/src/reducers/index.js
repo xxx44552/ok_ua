@@ -1,12 +1,15 @@
 import {
   FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL,
-  SET_SOCIAL_FB, SET_SOCIAL_INSTA, SET_SOCIAL_YOUTUBE } from "../action";
+  SET_SOCIAL_FB, SET_SOCIAL_INSTA, SET_SOCIAL_YOUTUBE, SET_HEADER_LOGO, SET_HEADER_LOGO_TYPE, SET_HEADER_TEXT,
+  SET_HEADER_TITLE, SET_TASK_TITLE, ADD_TASK_ITEM
+} from "../action";
 
 let form = {
   email: '',
   tel: '',
   header: {
     logo: '',
+    logo_type: '',
     title: '',
     text: ''
   },
@@ -32,7 +35,11 @@ let form = {
     address: ''
   },
   copy: '',
-  social: []
+  social: {
+    fb: '',
+    insta: '',
+    youtube: ''
+  }
 };
 
 let initialState = {
@@ -173,8 +180,77 @@ export default function data(state = initialState, action) {
           }
         }
       };
+    case SET_HEADER_LOGO:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          header: {
+            ...state.form.header,
+            logo: action.img
+          }
+        }
+      };
+    case SET_HEADER_LOGO_TYPE:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          header: {
+            ...state.form.header,
+            logo_type: action.imgType
+          }
+        }
+    };
+    case SET_HEADER_TITLE:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          header: {
+            ...state.form.header,
+            title: action.title
+          }
+        }
+      };
+    case SET_HEADER_TEXT:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          header: {
+            ...state.form.header,
+            text: action.text
+          }
+        }
+      };
+    case SET_TASK_TITLE:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          task: {
+            ...state.form.task,
+            title: action.title
+          }
+        }
+      };
+    case ADD_TASK_ITEM:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          task: {
+            ...state.form.task,
+            data: [
+                ...state.form.task.data,
+              action.item
+            ]
+          }
+        }
+      };
     default:
-          return state;
+       return state;
   }
 
 }
