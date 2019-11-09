@@ -15,7 +15,8 @@ let form = {
   },
   task: {
     title: '',
-    data: []
+    data: [],
+    deleteItem: []
   },
   news: [],
   youtube: [],
@@ -260,7 +261,7 @@ export default function data(state = initialState, action) {
         }
       };
     case DELETE_TASK_ITEM:
-      let arr = state.data.task.data.filter(el=> el.id !== action.id)
+      let arr = state.data.task.data.filter(el=> el.id !== action.id);
       return {
         ...state,
         data: {
@@ -274,7 +275,10 @@ export default function data(state = initialState, action) {
           ...state.form,
           task: {
             ...state.form.task,
-            deleteItem: action.id
+            deleteItem: [
+                ...state.form.task.deleteItem,
+                action.id
+            ]
           }
         }
       };

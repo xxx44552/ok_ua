@@ -341,8 +341,10 @@ app.put("/api", function(req, res){
   }
 
   if(deleteTaskItem) {
-    data.task.data = data.task.data.filter(el => el.id !== deleteTaskItem);
-    delPic('../data/img/task/', `img${deleteTaskItem}`)
+    for(var i = 0; i < deleteTaskItem.length; i++) {
+      data.task.data = data.task.data.filter(el => el.id !== deleteTaskItem[i]);
+      delPic('../data/img/task/', `img${deleteTaskItem[i]}`)
+    }
   }
 
   var dataR = JSON.stringify(data);
