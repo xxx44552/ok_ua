@@ -6,15 +6,16 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
+import OurProjects from "./components/OurProjects/OurProjects"
 
 
-class App extends React.Component{
+class App extends React.Component {
 
   constructor() {
     super();
 
     this.state = {
-
+      sliders: []
     }
   }
 
@@ -27,30 +28,33 @@ class App extends React.Component{
   render() {
     const { pending, error, tasks } = this.props;
 
-    if(pending) return <p>Загрузка</p>;
-    if(error) return <p>{error}</p>;
+    if (pending) return <p>Загрузка</p>;
+    if (error) return <p>{error}</p>;
 
     return (
       <BrowserRouter>
-        <Route exact={true} path='/login' render={()=>
-            <Index update={this.update}/>
-        }/>
-        <Route exact={true} path='/admin' render={()=>
-            <Admin />
-        }/>
-        <Route exact={true} path='/' render={()=>
+        <Route exact={true} path='/login' render={() =>
+          <Index update={this.update} />
+        } />
+        <Route exact={true} path='/admin' render={() =>
+          <Admin />
+        } />
+        <Route exact={true} path='/' render={() =>
+          <>
+            <OurProjects sliderState={this.state.sliders}/>
             <div className="wrapper">
-              <Test/>
+              <Test />
               {
-                tasks.map(({id, text, img}) => {
+                tasks.map(({ id, text, img }) => {
                   return <div key={id}>
-                    <img alt='pic' src={img}/>
+                    <img alt='pic' src={img} />
                     <p>{text}</p>
                   </div>
                 })
               }
             </div>
-        }/>
+          </>
+        } />
       </BrowserRouter>
     );
   }
@@ -67,7 +71,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
 
