@@ -59,6 +59,19 @@
             .callback {
                 display: flex;
                 flex-direction: column;
+                position: relative;
+
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    content: ''; 
+                    position: absolute; /* Абсолютное позиционирование */
+                    right: -17px; top: 25px; /* Положение треугольника */
+                    border: 6px solid transparent; /* Прозрачные границы */
+                    border-top: 7px solid #333033; /* Добавляем треугольник */
+                }
             }
         }
         .header-menu {

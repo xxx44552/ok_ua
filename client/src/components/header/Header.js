@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './headerStyles.scss'
+import DropDown from '../dropdown/dropdown'
 
 
 function Header(props) {
@@ -23,6 +24,7 @@ function Header(props) {
                     <div className="callback">
                         <span> {props.phone} </span>
                         <span>Зворотній дзвінок <img></img> </span>
+                        <DropDown className="dropdown"/>
                     </div>
                 </div>
                 <div className="header-menu">
