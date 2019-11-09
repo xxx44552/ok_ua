@@ -10,6 +10,7 @@ import Header from './components/header/Header'
 import './commonStyles/commonStyles.scss'
 import MainInfo from './components/mainInfo/MainInfo'
 import Tasks from './components/tasks/Tasks';
+import JoinModal from './components/joinModal/joinModal'
 
 
 class App extends React.Component{
@@ -46,9 +47,13 @@ class App extends React.Component{
         }/>
         <Route exact={true} path='/' render={()=>
             <div className="container-main">
-              <Header/>
-              <MainInfo/>
-              <Tasks/>
+              <div className="background-for-modal">
+                <Header/>
+                <MainInfo/>
+                <JoinModal/>
+                <Tasks/>
+              </div>
+
               
               {/* <Test/>
               {

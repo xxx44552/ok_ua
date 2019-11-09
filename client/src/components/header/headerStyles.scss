@@ -4,10 +4,11 @@
     margin: 0 auto;
     padding: 26px 0;
     justify-content: space-between;
+    z-index: 1;
 
     .left-side {
         display: flex;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Montserrat Alternates', sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
@@ -20,7 +21,7 @@
     }
     .right-side {
         display: flex;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Montserrat Alternates', sans-serif;;
         align-items: flex-end;
         flex-direction: column;
         width: 570px;
@@ -79,7 +80,7 @@
             padding-top: 23px;
             border-top: 1px solid #DCDCDC;
             align-items: center;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat Alternates', sans-serif;
 
             .header-button {
 
@@ -105,7 +106,7 @@
             a {
                 margin-right: 30px;
                 text-decoration: none;
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Montserrat Alternates', sans-serif;
                 font-size: 14px;
                 line-height: 17px;
                 align-items: center;
