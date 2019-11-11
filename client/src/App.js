@@ -6,6 +6,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Login from './components/login/login'
 import Admin from './components/admin'
 import Test from "./test";
+import News from './components/News/News';
+import Youtube from './components/Youtube/Youtube';
 
 
 class App extends React.Component{
@@ -40,7 +42,7 @@ class App extends React.Component{
         }/>
         <Route exact={true} path='/' render={()=>
             <div className="wrapper">
-              <Test/>
+              {/* <Test/>
               {
                 tasks.map(({id, text, img}) => {
                   return <div key={id}>
@@ -48,7 +50,10 @@ class App extends React.Component{
                     <p>{text}</p>
                   </div>
                 })
-              }
+              } */}
+              
+              <News news={this.props.news} />
+              <Youtube />
             </div>
         }/>
       </BrowserRouter>
@@ -59,7 +64,8 @@ class App extends React.Component{
 const mapStateToProps = state => ({
   error: state.error,
   pending: state.pending,
-  tasks: state.data.task.data
+  tasks: state.data.task.data,
+  news: state.data.news
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
