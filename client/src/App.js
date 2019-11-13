@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
-import OurProjects from "./components/OurProjects/OurProjects"
+import SliderSection from "./components/SliderSection/SliderSection"
 
 
 class App extends React.Component {
@@ -41,7 +41,7 @@ class App extends React.Component {
         } />
         <Route exact={true} path='/' render={() =>
           <>
-            <OurProjects sliderState={this.state.sliders}/>
+            <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
               <Test />
               {
@@ -63,7 +63,9 @@ class App extends React.Component {
 const mapStateToProps = state => ({
   error: state.error,
   pending: state.pending,
-  tasks: state.data.task.data
+  tasks: state.data.task.data,
+  project: state.data.project,
+
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
