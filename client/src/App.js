@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
-
+import OurProjects from './components/OurProjects';
 
 class App extends React.Component{
 
@@ -25,7 +25,7 @@ class App extends React.Component{
 
 
   render() {
-    const { pending, error, tasks } = this.props;
+    const { pending, error, tasks, teem, statistic, map } = this.props;
 
     if(pending) return <p>Загрузка</p>;
     if(error) return <p>{error}</p>;
@@ -49,6 +49,7 @@ class App extends React.Component{
                   </div>
                 })
               }
+            <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
         }/>
       </BrowserRouter>
@@ -59,7 +60,11 @@ class App extends React.Component{
 const mapStateToProps = state => ({
   error: state.error,
   pending: state.pending,
-  tasks: state.data.task.data
+  tasks: state.data.task.data,
+  statistic: state.data.statistic,
+  teem: state.data.teem,
+  map: state.data.map
+
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
