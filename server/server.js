@@ -281,6 +281,8 @@ app.put("/api", function(req, res){
   var deleteProjectItem = req.body.deleteProjectItem;
   var statisticData = req.body.statisticData;
   var deleteStatisticItem = req.body.deleteStatisticItem;
+  var teemData = req.body.teemData;
+  var deleteTeemItem = req.body.deleteTeemItem;
 
   if(fb) {
     data.social.fb = fb;
@@ -463,6 +465,35 @@ app.put("/api", function(req, res){
     for(var i = 0; i < deleteStatisticItem.length; i++) {
       data.statistic = data.statistic.filter(el => el.id !== deleteStatisticItem[i]);
       delPic('../data/img/statistic/', `img${deleteStatisticItem[i]}`)
+    }
+  }
+
+  if(teemData) {
+
+    // находим максимальный id
+    var taskTeemId = Math.max.apply(Math,data.teem.map(function(o){
+      return o.id;
+    }));
+
+    for(let i = 0; i < teemData.length; i++) {
+      taskTeemId += +1;
+
+      var teem = {
+        id: taskTeemId,
+        name: teemData[i].name,
+        prof: teemData[i].prof,
+        social: teemData[i].social,
+        img: `img/teem/img${taskTeemId}.${teemData[i].imgType}`
+      };
+      data.teem.push(teem)
+      getImg(teemData[i].img, taskTeemId, 'img/teem/', teemData[i].imgType, 'img');
+    }
+  }
+
+  if(deleteTeemItem) {
+    for(var i = 0; i < deleteTeemItem.length; i++) {
+      data.teem = data.teem.filter(el => el.id !== deleteTeemItem[i]);
+      delPic('../data/img/teem/', `img${deleteTeemItem[i]}`)
     }
   }
 

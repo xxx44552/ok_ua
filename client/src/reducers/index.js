@@ -2,7 +2,8 @@ import {
   FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL,
   SET_SOCIAL_FB, SET_SOCIAL_INSTA, SET_SOCIAL_YOUTUBE, SET_HEADER_LOGO, SET_HEADER_LOGO_TYPE, SET_HEADER_TEXT,
   SET_HEADER_TITLE, SET_TASK_TITLE, ADD_TASK_ITEM, DELETE_TASK_ITEM, ADD_NEWS_ITEM, DELETE_NEWS_ITEM, ADD_YOUTUBE_ITEM,
-  DELETE_YOUTUBE_ITEM, ADD_PROJECT_ITEM, DELETE_PROJECT_ITEM, SET_PROJECT_TITLE, ADD_STATISTIC_ITEM, DELETE_STATISTIC_ITEM
+  DELETE_YOUTUBE_ITEM, ADD_PROJECT_ITEM, DELETE_PROJECT_ITEM, SET_PROJECT_TITLE, ADD_STATISTIC_ITEM, DELETE_STATISTIC_ITEM,
+  ADD_TEEM_ITEM, DELETE_TEEM_ITEM
 } from "../action";
 
 let form = {
@@ -37,7 +38,10 @@ let form = {
     data: [],
     deleteItem: []
   },
-  teem: [],
+  teem: {
+    data: [],
+    deleteItem: []
+  },
   map: {
     title: '',
     coordinates: ''
@@ -468,6 +472,47 @@ export default function data(state = initialState, action) {
             ...state.form.statistic,
             deleteItem: [
               ...state.form.statistic.deleteItem,
+              action.id
+            ]
+          }
+        }
+      };
+    case ADD_TEEM_ITEM:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          teem: {
+            ...state.form.teem,
+            data: [
+              ...state.form.teem.data,
+              action.item
+            ]
+          }
+        },
+        data: {
+          ...state.data,
+          teem: [
+            ...state.data.teem,
+            action.item
+          ]
+        }
+      };
+    case DELETE_TEEM_ITEM:
+      let teemArr = state.data.teem.filter(el=> el.id !== action.id);
+      console.log(action.id)
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          teem: teemArr
+        },
+        form: {
+          ...state.form,
+          teem: {
+            ...state.form.teem,
+            deleteItem: [
+              ...state.form.teem.deleteItem,
               action.id
             ]
           }

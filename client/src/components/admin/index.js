@@ -11,6 +11,7 @@ import NewsItems from "./components/newsItems";
 import YoutubeItems from "./components/youTubeItems";
 import ProjectItems from "./components/projectItems";
 import StatisticItems from "./components/statisticItems";
+import TeemItems from "./components/teemItems";
 
 
 class Admin extends React.Component {
@@ -60,6 +61,8 @@ class Admin extends React.Component {
       deleteProjectItem: this.props.deleteProjectItem,
       statisticData: this.props.formStatisticData,
       deleteStatisticItem: this.props.deleteStatisticItem,
+      teemData: this.props.formTeemData,
+      deleteTeemItem: this.props.deleteTeemItem,
     };
 
     fetch('/api', {
@@ -133,6 +136,8 @@ class Admin extends React.Component {
               <ProjectItems/>
             <h2>Statistic</h2>
             <StatisticItems/>
+            <h2>Teem</h2>
+            <TeemItems/>
             <hr />
             <input className='admin-save' onChange={this.changeValue}  type='submit' value='Сохранить'/>
           </form>
@@ -174,7 +179,8 @@ const mapStateToProps = state => ({
   deleteProjectItem: state.form.project.deleteItem,
   formStatisticData: state.form.statistic.data,
   deleteStatisticItem: state.form.statistic.deleteItem,
-
+  formTeemData: state.form.teem.data,
+  deleteTeemItem: state.form.teem.deleteItem
 });
 
 const mapDispatchToProps = dispatch => {

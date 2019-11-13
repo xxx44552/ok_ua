@@ -22,6 +22,8 @@ export const ADD_PROJECT_ITEM = 'ADD_PROJECT_ITEM';
 export const DELETE_PROJECT_ITEM = 'DELETE_PROJECT_ITEM';
 export const ADD_STATISTIC_ITEM = 'ADD_STATISTIC_ITEM';
 export const DELETE_STATISTIC_ITEM = 'DELETE_STATISTIC_ITEM';
+export const ADD_TEEM_ITEM = 'ADD_TEEM_ITEM';
+export const DELETE_TEEM_ITEM = 'DELETE_TEEM_ITEM';
 
 export function fetchDataPending() {
   return {
@@ -212,6 +214,27 @@ export function addStatisticItem(text, count, img, imgType, id) {
 export function deleteStatisticItem(id) {
   return {
     type: DELETE_STATISTIC_ITEM,
+    id
+  }
+}
+
+export function addTeemItem(name, prof, img, imgType, social, id) {
+  return {
+    type: ADD_TEEM_ITEM,
+    item: {
+      id: id,
+      name: name,
+      prof: prof,
+      img: img,
+      social,
+      imgType: imgType
+    }
+  }
+}
+
+export function deleteTeemItem(id) {
+  return {
+    type: DELETE_TEEM_ITEM,
     id
   }
 }
