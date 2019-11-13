@@ -7,7 +7,7 @@ import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
 import SliderSection from "./components/SliderSection/SliderSection"
-
+import OurProjects from './components/OurProjects';
 
 class App extends React.Component {
 
@@ -26,7 +26,7 @@ class App extends React.Component {
 
 
   render() {
-    const { pending, error, tasks } = this.props;
+    const { pending, error, tasks, teem, statistic, map } = this.props;
 
     if (pending) return <p>Загрузка</p>;
     if (error) return <p>{error}</p>;
@@ -52,6 +52,7 @@ class App extends React.Component {
                   </div>
                 })
               }
+            <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
           </>
         } />
@@ -65,6 +66,9 @@ const mapStateToProps = state => ({
   pending: state.pending,
   tasks: state.data.task.data,
   project: state.data.project,
+  statistic: state.data.statistic,
+  teem: state.data.teem,
+  map: state.data.map
 
 });
 
