@@ -2,10 +2,15 @@ import React from 'react';
 import {connect} from "react-redux";
 import './style.sass'
 import {
-  setTel, setEmail, setSocialFb, setSocialInsta, setSocialYoutube, setHeaderText, setHeaderTitle, setTaskTitle
+  setTel, setEmail, setSocialFb, setSocialInsta, setSocialYoutube, setHeaderText, setHeaderTitle, setTaskTitle,
+  setProjectTitle
 } from "../../action";
 import HeaderLogo from "./components/headerLogo";
 import TaskItems from "./components/taskItems";
+import NewsItems from "./components/newsItems";
+import YoutubeItems from "./components/youTubeItems";
+import ProjectItems from "./components/projectItems";
+import StatisticItems from "./components/statisticItems";
 
 
 class Admin extends React.Component {
@@ -15,13 +20,13 @@ class Admin extends React.Component {
 
     this.state = {
       error: '',
-      fb: null,
-      insta: null,
-      youtube: null,
-      email: null,
-      headerTitle: null,
-      headerText: null,
-      headerLogo: null
+      // fb: null,
+      // insta: null,
+      // youtube: null,
+      // email: null,
+      // headerTitle: null,
+      // headerText: null,
+      // headerLogo: null
     }
   }
 
@@ -45,9 +50,18 @@ class Admin extends React.Component {
       headerLogoType: this.props.formHeaderLogoType,
       taskTitle: this.props.formTaskTitle,
       taskData: this.props.formTaskData,
-      deleteTaskItem: this.props.deleteTaskItem
-    }
-    console.log(this.state.fb)
+      deleteTaskItem: this.props.deleteTaskItem,
+      newsData: this.props.formNewsData,
+      deleteNewsItem: this.props.deleteNewsItem,
+      youtubeData: this.props.formYoutubeData,
+      deleteYoutubeItem: this.props.deleteYoutubeItem,
+      projectTitle: this.props.formProjectTitle,
+      projectData: this.props.formProjectData,
+      deleteProjectItem: this.props.deleteProjectItem,
+      statisticData: this.props.formStatisticData,
+      deleteStatisticItem: this.props.deleteStatisticItem,
+    };
+
     fetch('/api', {
       method: 'put',
       body: JSON.stringify(form),
@@ -60,7 +74,7 @@ class Admin extends React.Component {
   }
 
   render() {
-    const { fb, insta, youtube, tel, email, headerTitle, headerText, taskTitle } = this.props;
+    const { fb, insta, youtube, tel, email, headerTitle, headerText, taskTitle, projectTitle } = this.props;
     return (
       <>
         <div className="admin">
@@ -105,12 +119,22 @@ class Admin extends React.Component {
             <div>
               <div>
                 <label>Task title - </label>
-                <input onChange={(e)=>this.props.setTaskTitle(e.target.value)} name='headerTitle' type='text' defaultValue={taskTitle} />
+                <input onChange={(e)=>this.props.setTaskTitle(e.target.value)} name='taskTitle' type='text' defaultValue={taskTitle} />
                 <TaskItems/>
               </div>
             </div>
+            <h2>News</h2>
+            <NewsItems/>
+            <h2>YouTube</h2>
+            <YoutubeItems/>
+            <h2>Project</h2>
+              <label>Project title - </label>
+              <input onChange={(e)=>this.props.setProjectTitle(e.target.value)} name='projectTitle' type='text' defaultValue={projectTitle} />
+              <ProjectItems/>
+            <h2>Statistic</h2>
+            <StatisticItems/>
             <hr />
-            <input onChange={this.changeValue}  type='submit' value='Сохранить'/>
+            <input className='admin-save' onChange={this.changeValue}  type='submit' value='Сохранить'/>
           </form>
         </div>
       </>
@@ -139,7 +163,17 @@ const mapStateToProps = state => ({
   taskTitle: state.data.task.title,
   formTaskTitle: state.form.task.title,
   formTaskData: state.form.task.data,
-  deleteTaskItem: state.form.task.deleteItem
+  deleteTaskItem: state.form.task.deleteItem,
+  formNewsData: state.form.news.data,
+  deleteNewsItem: state.form.news.deleteItem,
+  formYoutubeData: state.form.youtube.data,
+  deleteYoutubeItem: state.form.youtube.deleteItem,
+  projectTitle: state.data.project.title,
+  formProjectTitle: state.form.project.title,
+  formProjectData: state.form.project.items,
+  deleteProjectItem: state.form.project.deleteItem,
+  formStatisticData: state.form.statistic.data,
+  deleteStatisticItem: state.form.statistic.deleteItem,
 
 });
 
@@ -168,6 +202,9 @@ const mapDispatchToProps = dispatch => {
     },
     setTaskTitle: (title) => {
       dispatch(setTaskTitle(title))
+    },
+    setProjectTitle: (title) => {
+      dispatch(setProjectTitle(title))
     },
   }
 };

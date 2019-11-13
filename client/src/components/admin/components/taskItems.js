@@ -55,7 +55,6 @@ class TaskItems extends React.Component {
           {
             items.map(({id, text, img}) => {
               return <div key={text} className='admin-task'>
-                <p>ID: {id}</p>
                 <img src={img} alt=''/>
                 <p>{text}</p>
                 <div className='admin-btn' onClick={()=> this.props.deleteTaskItem(id)}>Удалить</div>

@@ -1,7 +1,8 @@
 import {
   FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL,
   SET_SOCIAL_FB, SET_SOCIAL_INSTA, SET_SOCIAL_YOUTUBE, SET_HEADER_LOGO, SET_HEADER_LOGO_TYPE, SET_HEADER_TEXT,
-  SET_HEADER_TITLE, SET_TASK_TITLE, ADD_TASK_ITEM, DELETE_TASK_ITEM
+  SET_HEADER_TITLE, SET_TASK_TITLE, ADD_TASK_ITEM, DELETE_TASK_ITEM, ADD_NEWS_ITEM, DELETE_NEWS_ITEM, ADD_YOUTUBE_ITEM,
+  DELETE_YOUTUBE_ITEM, ADD_PROJECT_ITEM, DELETE_PROJECT_ITEM, SET_PROJECT_TITLE, ADD_STATISTIC_ITEM, DELETE_STATISTIC_ITEM
 } from "../action";
 
 let form = {
@@ -18,14 +19,24 @@ let form = {
     data: [],
     deleteItem: []
   },
-  news: [],
-  youtube: [],
+  news: {
+    data: [],
+    deleteItem: []
+  },
+  youtube: {
+    data: [],
+    deleteItem: []
+  },
   project: {
     title: '',
     big_img: '',
-    items: []
+    items: [],
+    deleteItem: []
   },
-  statistic: [],
+  statistic: {
+    data: [],
+    deleteItem: []
+  },
   teem: [],
   map: {
     title: '',
@@ -278,6 +289,186 @@ export default function data(state = initialState, action) {
             deleteItem: [
                 ...state.form.task.deleteItem,
                 action.id
+            ]
+          }
+        }
+      };
+    case ADD_NEWS_ITEM:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          news: {
+            ...state.form.news,
+            data: [
+              ...state.form.news.data,
+              action.item
+            ]
+          }
+        },
+        data: {
+          ...state.data,
+          news: [
+            ...state.data.news,
+            action.item
+          ]
+        }
+      };
+    case DELETE_NEWS_ITEM:
+      let arr1 = state.data.news.filter(el=> el.id !== action.id);
+      console.log(action.id)
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          news: arr1
+        },
+        form: {
+          ...state.form,
+          news: {
+            ...state.form.news,
+            deleteItem: [
+              ...state.form.news.deleteItem,
+              action.id
+            ]
+          }
+        }
+      };
+    case ADD_YOUTUBE_ITEM:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          youtube: {
+            ...state.form.youtube,
+            data: [
+              ...state.form.youtube.data,
+              action.item
+            ]
+          }
+        },
+        data: {
+          ...state.data,
+          youtube: [
+            ...state.data.youtube,
+            action.item
+          ]
+        }
+      };
+    case DELETE_YOUTUBE_ITEM:
+      let arr2 = state.data.youtube.filter(el=> el.id !== action.id);
+      console.log(action.id)
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          youtube: arr2
+        },
+        form: {
+          ...state.form,
+          youtube: {
+            ...state.form.youtube,
+            deleteItem: [
+              ...state.form.youtube.deleteItem,
+              action.id
+            ]
+          }
+        }
+      };
+    case SET_PROJECT_TITLE:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          project: {
+            ...state.form.project,
+            title: action.title
+          }
+        }
+      };
+    case ADD_PROJECT_ITEM:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          project: {
+            ...state.form.project,
+            items: [
+              ...state.form.project.items,
+              action.item
+            ]
+          }
+        },
+        data: {
+          ...state.data,
+          project: {
+            ...state.data.project,
+            items: [
+              ...state.data.project.items,
+              action.item
+            ]
+          }
+        }
+      };
+    case DELETE_PROJECT_ITEM:
+      let arr3 = state.data.project.items.filter(el=> el.id !== action.id);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          project: {
+            ...state.data.project,
+            items: arr3
+          }
+        },
+        form: {
+          ...state.form,
+          project: {
+            ...state.form.project,
+            deleteItem: [
+              ...state.form.project.deleteItem,
+              action.id
+            ]
+          }
+        }
+      };
+    case ADD_STATISTIC_ITEM:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          statistic: {
+            ...state.form.statistic,
+            data: [
+              ...state.form.statistic.data,
+              action.item
+            ]
+          }
+        },
+        data: {
+          ...state.data,
+          statistic: [
+            ...state.data.statistic,
+            action.item
+          ]
+        }
+      };
+    case DELETE_STATISTIC_ITEM:
+      let arr4 = state.data.statistic.filter(el=> el.id !== action.id);
+      console.log(action.id)
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          statistic: arr4
+        },
+        form: {
+          ...state.form,
+          statistic: {
+            ...state.form.statistic,
+            deleteItem: [
+              ...state.form.statistic.deleteItem,
+              action.id
             ]
           }
         }
