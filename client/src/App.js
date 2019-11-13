@@ -6,15 +6,16 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
+import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
 
-class App extends React.Component{
+class App extends React.Component {
 
   constructor() {
     super();
 
     this.state = {
-
+      sliders: []
     }
   }
 
@@ -27,31 +28,34 @@ class App extends React.Component{
   render() {
     const { pending, error, tasks, teem, statistic, map } = this.props;
 
-    if(pending) return <p>Загрузка</p>;
-    if(error) return <p>{error}</p>;
+    if (pending) return <p>Загрузка</p>;
+    if (error) return <p>{error}</p>;
 
     return (
       <BrowserRouter>
-        <Route exact={true} path='/login' render={()=>
-            <Index update={this.update}/>
-        }/>
-        <Route exact={true} path='/admin' render={()=>
-            <Admin />
-        }/>
-        <Route exact={true} path='/' render={()=>
+        <Route exact={true} path='/login' render={() =>
+          <Index update={this.update} />
+        } />
+        <Route exact={true} path='/admin' render={() =>
+          <Admin />
+        } />
+        <Route exact={true} path='/' render={() =>
+          <>
+            <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
-              <Test/>
+              <Test />
               {
-                tasks.map(({id, text, img}) => {
+                tasks.map(({ id, text, img }) => {
                   return <div key={id}>
-                    <img alt='pic' src={img}/>
+                    <img alt='pic' src={img} />
                     <p>{text}</p>
                   </div>
                 })
               }
             <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
-        }/>
+          </>
+        } />
       </BrowserRouter>
     );
   }
@@ -61,6 +65,7 @@ const mapStateToProps = state => ({
   error: state.error,
   pending: state.pending,
   tasks: state.data.task.data,
+  project: state.data.project,
   statistic: state.data.statistic,
   teem: state.data.teem,
   map: state.data.map
@@ -72,7 +77,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
 
