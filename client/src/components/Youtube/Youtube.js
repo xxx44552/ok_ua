@@ -4,8 +4,7 @@ import './Youtube.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { useMediaQuery } from 'react-responsive';
 
 const Youtube = () => {
     const settings = {
@@ -13,8 +12,22 @@ const Youtube = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 1
-      };
+        slidesToScroll: 1,
+        arrows: true
+    };
+    
+    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
+    const isMobile = useMediaQuery({ query: '(max-width: 420px)' });
+
+    if (isTablet) {
+        settings.slidesToShow = 2;
+    }
+
+    if (isMobile) {
+        settings.slidesToShow = 1;
+        settings.arrows = false;
+        settings.dots = true;
+    }
 
     return (
         <Slider className="yt-slider" {...settings}>

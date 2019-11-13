@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
 .yt-slider {
-    width: 1111px;
+    width: 1000px;
     margin: 0 auto;
 
     .yt-slider-element {
         width: 308px;
         height: 400px;
-        margin-left: 30px;
+        margin: 0 auto;
         background: url('../../img/youtube-1.png') no-repeat;
         position: relative;
         z-index: 1;
@@ -17,7 +17,7 @@
             opacity: .5;
             position: absolute;
             top: 135px;
-            left: 110px;
+            left: 33%;
 
             &:hover {
                 cursor: pointer;
@@ -38,7 +38,8 @@
                 font-family: 'Montserrat', sans-serif;
                 font-size: 14px;
                 line-height: 17px;
-                padding-left: 10%;
+                text-align: center;
+                padding-right: 25px;
                 color: #000000;
                 padding-top: 28px;
             }
@@ -65,11 +66,82 @@
         background: url('../../img/youtube-2.png') no-repeat;
     }
 
-    .slick-next:before {
-        content: url('../../img/youtube-right.png');
+    .slick-next {
+        transform: translateX(30%);
+
+        &:before {
+            content: url('../../img/youtube-right.png');
+        }
     }
 
-    .slick-prev:before {
-        content: url('../../img/youtube-left.png');
+    .slick-prev {
+        transform: translateX(-150%);
+
+        &:before {
+            content: url('../../img/youtube-left.png');
+        }
+    }
+
+    .slick-dots {
+        li {
+            width: 8.5px;
+            height: 8.5px;
+            border-radius: 50%;
+            border: 1px solid #C4C4C4;
+
+            button::before {
+                display: none;
+            }
+        }
+
+        .slick-active {
+            background: #E5E5E5;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .yt-slider {
+        width: 700px;
+
+        .yt-slider-element {
+            margin-left: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .yt-slider {
+        width: 660px;
+
+        .slick-prev {
+            transform: translateX(0);
+        }
+
+        .slick-next {
+            transform: translateX(0);
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .yt-slider {
+        width: 100%;
+
+        .yt-slider-element {
+            width: 100%;
+            background: url('../../img/youtube-1_400.png') no-repeat;
+            margin-left: 0;
+
+            .fa-youtube {
+                left: 38%;
+            }
+
+            .yt-slider-text-block {
+                .yt-slider-text {
+                    padding-right: 0;
+                }
+            }
+        }
     }
 }
