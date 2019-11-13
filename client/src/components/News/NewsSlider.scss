@@ -75,12 +75,40 @@
         background: rgb(105, 105, 15);
     }
 
-    .slick-next:before {
-        content: url('../../img/youtube-right.png');
+    .slick-next {
+        width: 36px;
+        height: 36px;
+        transform: translate(-100%, -60%);
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.48);
+        border-radius: 50%;
+        padding-left: 3px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.48);
+        }
+
+        &:before {
+            content: url('../../img/youtube-right.png');
+        }
     }
 
-    .slick-prev:before {
-        content: url('../../img/youtube-left.png');
+    .slick-prev {
+        width: 36px;
+        height: 36px;
+        transform: translate(100%, -60%);
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.48);
+        border-radius: 50%;
+        padding-right: 3px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.48);
+        }
+
+        &:before {
+            content: url('../../img/youtube-left.png');
+        }
     }
 
     .slick-dots {

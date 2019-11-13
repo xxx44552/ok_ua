@@ -12,6 +12,20 @@
         position: relative;
         z-index: 1;
 
+        .fa-youtube {
+            font-size: 70px;
+            opacity: .5;
+            position: absolute;
+            top: 135px;
+            left: 110px;
+
+            &:hover {
+                cursor: pointer;
+                color: #FF0000;
+                opacity: 1;
+            }
+        }
+
         .yt-slider-text-block {
             position: absolute;
             bottom: 0;
@@ -24,7 +38,7 @@
                 font-family: 'Montserrat', sans-serif;
                 font-size: 14px;
                 line-height: 17px;
-                text-align: center;
+                padding-left: 10%;
                 color: #000000;
                 padding-top: 28px;
             }
