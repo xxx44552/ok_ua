@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
-import Login from './components/login/login'
-import Admin from './components/admin'
-import Test from "./test";
+import Login from './components/login/login';
+import Admin from './components/admin';
 import News from './components/News/News';
 import Youtube from './components/Youtube/Youtube';
 
@@ -42,15 +41,6 @@ class App extends React.Component{
         }/>
         <Route exact={true} path='/' render={()=>
             <div className="wrapper">
-              {/* <Test/>
-              {
-                tasks.map(({id, text, img}) => {
-                  return <div key={id}>
-                    <img alt='pic' src={img}/>
-                    <p>{text}</p>
-                  </div>
-                })
-              } */}
               
               <News news={this.props.news} />
               <Youtube />

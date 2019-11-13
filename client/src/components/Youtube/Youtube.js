@@ -1,5 +1,5 @@
 import React from 'react';
-import './Youtube.css';
+import './Youtube.scss';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -16,46 +16,39 @@ const Youtube = () => {
 
     return (
         <Slider className="yt-slider" {...settings}>
-            <div>
-                <div className="yt-slider-element">
-                    <div className="yt-slider-text-block">
-                        <p className="yt-slider-text">Підтримки членам Організації</p>
-                    </div>
+            <div className="yt-slider-element">
+                <div className="yt-slider-text-block">
+                    <p className="yt-slider-text">Підтримки членам Організації</p>
                 </div>
             </div>
-            <div>
-                <div className="yt-slider-element yt-green">
-                    <div className="yt-slider-text-block">
-                        <p className="yt-slider-text">Підтримки членам Організації</p>
-                    </div>
+            
+            <div className="yt-slider-element yt-slider-element--second">
+                <div className="yt-slider-text-block">
+                    <p className="yt-slider-text">Підтримки членам Організації</p>
                 </div>
             </div>
-            <div>
-                <div className="yt-slider-element yt-yellow">
-                    <div className="yt-slider-text-block">
-                        <p className="yt-slider-text">Підтримки членам Організації</p>
-                    </div>
+            
+            <div className="yt-slider-element yt-slider-element--third">
+                <div className="yt-slider-text-block">
+                    <p className="yt-slider-text">Підтримки членам Організації</p>
                 </div>
             </div>
-            <div>
-                <div className="yt-slider-element blue">
-                    <div className="yt-slider-text-block">
-                        <p className="yt-slider-text">Підтримки членам Організації</p>
-                    </div>
+
+            <div className="yt-slider-element yt-slider-element--fourth">
+                <div className="yt-slider-text-block">
+                    <p className="yt-slider-text">Підтримки членам Організації</p>
                 </div>
             </div>
-            <div>
-                <div className="yt-slider-element black">
-                    <div className="yt-slider-text-block">
-                        <p className="yt-slider-text">Підтримки членам Організації</p>
-                    </div>
+            
+            <div className="yt-slider-element yt-slider-element--fifth">
+                <div className="yt-slider-text-block">
+                    <p className="yt-slider-text">Підтримки членам Організації</p>
                 </div>
             </div>
-            <div>
-                <div className="yt-slider-element orange">
-                    <div className="yt-slider-text-block">
-                        <p className="yt-slider-text">Підтримки членам Організації</p>
-                    </div>
+            
+            <div className="yt-slider-element yt-slider-element--sixth">
+                <div className="yt-slider-text-block">
+                    <p className="yt-slider-text">Підтримки членам Організації</p>
                 </div>
             </div>
         </Slider>
