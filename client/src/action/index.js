@@ -24,6 +24,12 @@ export const ADD_STATISTIC_ITEM = 'ADD_STATISTIC_ITEM';
 export const DELETE_STATISTIC_ITEM = 'DELETE_STATISTIC_ITEM';
 export const ADD_TEEM_ITEM = 'ADD_TEEM_ITEM';
 export const DELETE_TEEM_ITEM = 'DELETE_TEEM_ITEM';
+export const SET_MAP_TITLE = 'SET_MAP_TITLE';
+export const SET_MAP_COORDINATES = 'SET_MAP_COORDINATES';
+export const SET_FOOTER_ADDRESS = 'SET_FOOTER_ADDRESS';
+export const SET_FOOTER_LOGO = 'SET_FOOTER_LOGO';
+export const SET_FOOTER_LOGO_TYPE = 'SET_FOOTER_LOGO_TYPE';
+export const SET_COPY = 'SET_COPY';
 
 export function fetchDataPending() {
   return {
@@ -236,5 +242,47 @@ export function deleteTeemItem(id) {
   return {
     type: DELETE_TEEM_ITEM,
     id
+  }
+}
+
+export function setMapTitle(title) {
+  return {
+    type: SET_MAP_TITLE,
+    title
+  }
+}
+
+export function setMapCoordinates(value) {
+  return {
+    type: SET_MAP_COORDINATES,
+    value
+  }
+}
+
+export function setFooterAddress(address) {
+  return {
+    type: SET_FOOTER_ADDRESS,
+    address
+  }
+}
+
+export function setFooterLogo(img) {
+  return {
+    type: SET_FOOTER_LOGO,
+    img
+  }
+}
+
+export function setFooterLogoType(imgType) {
+  return {
+    type: SET_FOOTER_LOGO_TYPE,
+    imgType
+  }
+}
+
+export function setCopy(copy) {
+  return {
+    type: SET_COPY,
+    copy
   }
 }

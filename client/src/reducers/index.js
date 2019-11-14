@@ -1,9 +1,36 @@
 import {
-  FETCH_DATA_PENDING, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, SET_TEL, SET_EMAIL,
-  SET_SOCIAL_FB, SET_SOCIAL_INSTA, SET_SOCIAL_YOUTUBE, SET_HEADER_LOGO, SET_HEADER_LOGO_TYPE, SET_HEADER_TEXT,
-  SET_HEADER_TITLE, SET_TASK_TITLE, ADD_TASK_ITEM, DELETE_TASK_ITEM, ADD_NEWS_ITEM, DELETE_NEWS_ITEM, ADD_YOUTUBE_ITEM,
-  DELETE_YOUTUBE_ITEM, ADD_PROJECT_ITEM, DELETE_PROJECT_ITEM, SET_PROJECT_TITLE, ADD_STATISTIC_ITEM, DELETE_STATISTIC_ITEM,
-  ADD_TEEM_ITEM, DELETE_TEEM_ITEM
+  FETCH_DATA_PENDING,
+  FETCH_DATA_SUCCESS,
+  FETCH_DATA_ERROR,
+  SET_TEL,
+  SET_EMAIL,
+  SET_SOCIAL_FB,
+  SET_SOCIAL_INSTA,
+  SET_SOCIAL_YOUTUBE,
+  SET_HEADER_LOGO,
+  SET_HEADER_LOGO_TYPE,
+  SET_HEADER_TEXT,
+  SET_HEADER_TITLE,
+  SET_TASK_TITLE,
+  ADD_TASK_ITEM,
+  DELETE_TASK_ITEM,
+  ADD_NEWS_ITEM,
+  DELETE_NEWS_ITEM,
+  ADD_YOUTUBE_ITEM,
+  DELETE_YOUTUBE_ITEM,
+  ADD_PROJECT_ITEM,
+  DELETE_PROJECT_ITEM,
+  SET_PROJECT_TITLE,
+  ADD_STATISTIC_ITEM,
+  DELETE_STATISTIC_ITEM,
+  ADD_TEEM_ITEM,
+  DELETE_TEEM_ITEM,
+  SET_MAP_COORDINATES,
+  SET_MAP_TITLE,
+  SET_FOOTER_ADDRESS,
+  SET_FOOTER_LOGO,
+  SET_FOOTER_LOGO_TYPE,
+  SET_COPY
 } from "../action";
 
 let form = {
@@ -516,6 +543,69 @@ export default function data(state = initialState, action) {
               action.id
             ]
           }
+        }
+      };
+    case SET_MAP_TITLE:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          map: {
+            ...state.form.map,
+            title: action.title
+          }
+        }
+      };
+    case SET_MAP_COORDINATES:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          map: {
+            ...state.form.map,
+            coordinates: action.value
+          }
+        }
+      };
+    case SET_FOOTER_ADDRESS:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          footer: {
+            ...state.form.footer,
+            address: action.address
+          }
+        }
+      };
+    case SET_FOOTER_LOGO:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          footer: {
+            ...state.form.footer,
+            logo: action.img
+          }
+        }
+      };
+    case SET_FOOTER_LOGO_TYPE:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          footer: {
+            ...state.form.footer,
+            logo_type: action.imgType
+          }
+        }
+      };
+    case SET_COPY:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          copy: action.copy
         }
       };
     default:

@@ -283,6 +283,12 @@ app.put("/api", function(req, res){
   var deleteStatisticItem = req.body.deleteStatisticItem;
   var teemData = req.body.teemData;
   var deleteTeemItem = req.body.deleteTeemItem;
+  var mapCoordinates = req.body.mapCoordinates;
+  var mapTitle = req.body.mapTitle;
+  var footerAddress = req.body.footerAddress;
+  var footerLogo = req.body.footerLogo;
+  var footerLogoType = req.body.footerLogoType;
+  var copy = req.body.copy;
 
   if(fb) {
     data.social.fb = fb;
@@ -495,6 +501,44 @@ app.put("/api", function(req, res){
       data.teem = data.teem.filter(el => el.id !== deleteTeemItem[i]);
       delPic('../data/img/teem/', `img${deleteTeemItem[i]}`)
     }
+  }
+
+  if(mapTitle) {
+    data.map.title = mapTitle;
+  }
+
+  if(mapCoordinates) {
+    data.map.coordinates = mapCoordinates;
+  }
+
+  if(footerAddress) {
+    data.footer.address = footerAddress;
+  }
+
+  if(footerLogo) {
+    fs.readdir('../data/img', (err, files) => {
+      files.forEach((file) => {
+        let img = file.match(/footer_logo/)
+        if(img) {
+          console.log(img.input)
+          if(file == img.input) {
+            console.log(file)
+            fs.unlink(`${__dirname}/../data/img/${file}`, (err) => {
+              if (err) console.log(err);
+              else console.log("del pic", file);
+            });
+          }
+        }
+
+      });
+      getImg(footerLogo, null, 'img', footerLogoType, 'footer_logo');
+    });
+
+    data.footer.logo = `img/footer_logo.${footerLogoType}`
+  }
+
+  if(copy) {
+    data.copy = copy;
   }
 
   var dataR = JSON.stringify(data);

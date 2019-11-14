@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import './style.sass'
 import {
   setTel, setEmail, setSocialFb, setSocialInsta, setSocialYoutube, setHeaderText, setHeaderTitle, setTaskTitle,
-  setProjectTitle
+  setProjectTitle, setMapTitle, setMapCoordinates, setFooterAddress, setCopy
 } from "../../action";
 import HeaderLogo from "./components/headerLogo";
 import TaskItems from "./components/taskItems";
@@ -12,6 +12,7 @@ import YoutubeItems from "./components/youTubeItems";
 import ProjectItems from "./components/projectItems";
 import StatisticItems from "./components/statisticItems";
 import TeemItems from "./components/teemItems";
+import FooterLogo from "./components/footerLogo";
 
 
 class Admin extends React.Component {
@@ -21,13 +22,6 @@ class Admin extends React.Component {
 
     this.state = {
       error: '',
-      // fb: null,
-      // insta: null,
-      // youtube: null,
-      // email: null,
-      // headerTitle: null,
-      // headerText: null,
-      // headerLogo: null
     }
   }
 
@@ -63,6 +57,12 @@ class Admin extends React.Component {
       deleteStatisticItem: this.props.deleteStatisticItem,
       teemData: this.props.formTeemData,
       deleteTeemItem: this.props.deleteTeemItem,
+      mapTitle: this.props.formMapTitle,
+      mapCoordinates: this.props.formMapCoordinates,
+      footerAddress: this.props.formFooterAddress,
+      footerLogo: this.props.formFooterLogo,
+      footerLogoType: this.props.formFooterLogoType,
+      copy: this.props.formCopy
     };
 
     fetch('/api', {
@@ -77,7 +77,7 @@ class Admin extends React.Component {
   }
 
   render() {
-    const { fb, insta, youtube, tel, email, headerTitle, headerText, taskTitle, projectTitle } = this.props;
+    const { fb, insta, youtube, tel, email, headerTitle, headerText, taskTitle, projectTitle, mapTitle, mapCoordinates, footerAddress, copy } = this.props;
     return (
       <>
         <div className="admin">
@@ -138,6 +138,20 @@ class Admin extends React.Component {
             <StatisticItems/>
             <h2>Teem</h2>
             <TeemItems/>
+            <h2>Map</h2>
+            <label>Map title - </label>
+            <input onChange={(e)=>this.props.setMapTitle(e.target.value)} name='mapTitle' type='text' defaultValue={mapTitle} /><br/>
+            <label>Coordinates - </label>
+            <input onChange={(e)=>this.props.setMapCoordinates(e.target.value)} name='coordinates' type='text' defaultValue={mapCoordinates} />
+            <h2>Footer</h2>
+            <div>
+              <label>Footer address - </label>
+              <textarea onChange={(e)=>this.props.setFooterAddress(e.target.value)} defaultValue={footerAddress}></textarea>
+            </div>
+            <FooterLogo/>
+            <h2>Copy</h2>
+            <label>Copy text - </label>
+            <textarea onChange={(e)=>this.props.setCopy(e.target.value)} defaultValue={copy}></textarea>
             <hr />
             <input className='admin-save' onChange={this.changeValue}  type='submit' value='Сохранить'/>
           </form>
@@ -180,7 +194,17 @@ const mapStateToProps = state => ({
   formStatisticData: state.form.statistic.data,
   deleteStatisticItem: state.form.statistic.deleteItem,
   formTeemData: state.form.teem.data,
-  deleteTeemItem: state.form.teem.deleteItem
+  deleteTeemItem: state.form.teem.deleteItem,
+  mapTitle: state.data.map.title,
+  mapCoordinates: state.data.map.coordinates,
+  formMapTitle: state.form.map.title,
+  formMapCoordinates: state.form.map.coordinates,
+  footerAddress: state.data.footer.address,
+  formFooterAddress: state.form.footer.address,
+  formFooterLogo: state.form.footer.logo,
+  formFooterLogoType: state.form.footer.logo_type,
+  copy: state.data.copy,
+  formCopy: state.form.copy
 });
 
 const mapDispatchToProps = dispatch => {
@@ -211,6 +235,18 @@ const mapDispatchToProps = dispatch => {
     },
     setProjectTitle: (title) => {
       dispatch(setProjectTitle(title))
+    },
+    setMapTitle: (title) => {
+      dispatch(setMapTitle(title))
+    },
+    setMapCoordinates: (value) => {
+      dispatch(setMapCoordinates(value))
+    },
+    setFooterAddress: (address) => {
+      dispatch(setFooterAddress(address))
+    },
+    setCopy: (copy) => {
+      dispatch(setCopy(copy))
     },
   }
 };
