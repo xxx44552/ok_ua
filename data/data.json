@@ -78,50 +78,26 @@
         "id": 0,
         "title": "Будівельно-реставраційний проект",
         "text": "Сприяння розробці та реалізації будівельних та реставраційних проектів екологічного та культурного напрямку;",
-        "img": "/img/project/data/img1.png"
-      },
-      {
-        "id": 1,
-        "title": "Будівельно-реставраційний проект",
-        "text": "Сприяння розробці та реалізації будівельних та реставраційних проектів екологічного та культурного напрямку;",
-        "img": "/img/project/data/img1.png"
-      },
-      {
-        "id": 2,
-        "title": "Будівельно-реставраційний проект",
-        "text": "Сприяння розробці та реалізації будівельних та реставраційних проектів екологічного та культурного напрямку;",
-        "img": "/img/project/data/img1.png"
-      },
-      {
-        "id": 3,
-        "title": "Будівельно-реставраційний проект",
-        "text": "Сприяння розробці та реалізації будівельних та реставраційних проектів екологічного та культурного напрямку;",
-        "img": "/img/project/data/img1.png"
-      },
-      {
-        "id": 4,
-        "title": "Будівельно-реставраційний проект",
-        "text": "Сприяння розробці та реалізації будівельних та реставраційних проектів екологічного та культурного напрямку;",
-        "img": "/img/project/data/img1.png"
+        "img": "/img/project/data/img0.png"
       }
     ]
   },
   "statistic": [
     {
       "id": 0,
-      "img": "/img/statistic/img1.png",
+      "img": "/img/statistic/img0.png",
       "count": 756,
       "text": "людей отримали допомогу"
     },
     {
       "id": 1,
-      "img": "/img/statistic/img2.png",
+      "img": "/img/statistic/img1.png",
       "count": 756,
       "text": "людей приєднались до нас"
     },
     {
       "id": 2,
-      "img": "/img/statistic/img3.png",
+      "img": "/img/statistic/img2.png",
       "count": 1098,
       "text": "грн, зібранних коштів"
     }
@@ -129,6 +105,17 @@
   "teem": [
     {
       "id": 0,
+      "img": "/img/teem/img0.png",
+      "name": "Шевченко Юрій",
+      "prof": "Голова організації",
+      "social": {
+        "fb": "https://fb.com",
+        "instagram": "https://insta.com",
+        "in": "https://in.com"
+      }
+    },
+    {
+      "id": 1,
       "img": "/img/teem/img1.png",
       "name": "Шевченко Юрій",
       "prof": "Голова організації",
@@ -139,15 +126,15 @@
       }
     },
     {
-      "id": 1,
-      "img": "/img/teem/img2.png",
-      "name": "Шевченко Юрій",
-      "prof": "Голова організації",
+      "id": 2,
+      "name": "Artur Kudaev",
+      "prof": "Frontend",
       "social": {
-        "fb": "https://fb.com",
-        "instagram": "https://insta.com",
-        "in": "https://in.com"
-      }
+        "fb": null,
+        "instagram": null,
+        "in": null
+      },
+      "img": "img/teem/img2.jpeg"
     }
   ],
   "map": {
