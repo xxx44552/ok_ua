@@ -43,15 +43,6 @@ class App extends React.Component {
           <>
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
-              <Test />
-              {
-                tasks.map(({ id, text, img }) => {
-                  return <div key={id}>
-                    <img alt='pic' src={img} />
-                    <p>{text}</p>
-                  </div>
-                })
-              }
             <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
           </>

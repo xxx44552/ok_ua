@@ -75,6 +75,34 @@ app.get('/logout', (req, res) => {
 });
 //End authorization *************************
 
+//загрузка на сервер картинки
+function getImg(el, id, dir, typeImg, nameImg) {
+  var imageData = el.replace(/^data:image\/\w+;base64,/, '');
+  fs.writeFile(`${__dirname}/../data/${dir}/${nameImg}${id?id:""}.${typeImg}`, imageData, {encoding: 'base64'}, function(err){
+    if(err) {
+      console.error(err)
+    }
+  });
+}
+
+function delPic(dir, name) {
+  fs.readdir(dir, (err, files) => {
+    files.forEach((file) => {
+      let img = file.match(name)
+      if(img) {
+        console.log(img.input)
+        if(file == img.input) {
+          console.log(file)
+          fs.unlink(`${dir}${file}`, (err) => {
+            if (err) console.log(err);
+            else console.log("del pic", file);
+          });
+        }
+      }
+    });
+  });
+}
+
 app.get("/api", function(req, res){
 
   var file = fs.readFileSync("../data/data.json", "utf8");
@@ -230,6 +258,8 @@ app.put("/api", function(req, res){
   var file = fs.readFileSync("../data/data.json", "utf8");
   var data = JSON.parse(file);
 
+
+
   var fb = req.body.fb;
   var insta = req.body.insta;
   var youtube = req.body.youtube;
@@ -237,7 +267,28 @@ app.put("/api", function(req, res){
   var email = req.body.email;
   var headerText = req.body.headerText;
   var headerTitle = req.body.headerTitle;
-
+  var headerLogo = req.body.headerLogo;
+  var headerLogoType = req.body.headerLogoType;
+  var taskTitle = req.body.taskTitle;
+  var taskData = req.body.taskData;
+  var deleteTaskItem = req.body.deleteTaskItem;
+  var newsData = req.body.newsData;
+  var deleteNewsItem = req.body.deleteNewsItem;
+  var youtubeData = req.body.youtubeData;
+  var deleteYoutubeItem = req.body.deleteYoutubeItem;
+  var projectTitle = req.body.projectTitle;
+  var projectData = req.body.projectData;
+  var deleteProjectItem = req.body.deleteProjectItem;
+  var statisticData = req.body.statisticData;
+  var deleteStatisticItem = req.body.deleteStatisticItem;
+  var teemData = req.body.teemData;
+  var deleteTeemItem = req.body.deleteTeemItem;
+  var mapCoordinates = req.body.mapCoordinates;
+  var mapTitle = req.body.mapTitle;
+  var footerAddress = req.body.footerAddress;
+  var footerLogo = req.body.footerLogo;
+  var footerLogoType = req.body.footerLogoType;
+  var copy = req.body.copy;
 
   if(fb) {
     data.social.fb = fb;
@@ -260,7 +311,235 @@ app.put("/api", function(req, res){
   if(headerTitle) {
     data.header.title = headerTitle;
   }
+  if(headerLogo) {
+    fs.readdir('../data/img', (err, files) => {
+        files.forEach((file) => {
+          let img = file.match(/header_logo/)
+          if(img) {
+            console.log(img.input)
+            if(file == img.input) {
+              console.log(file)
+              fs.unlink(`${__dirname}/../data/img/${file}`, (err) => {
+                if (err) console.log(err);
+                else console.log("del pic", file);
+              });
+            }
+          }
 
+        });
+        getImg(headerLogo, null, 'img', headerLogoType, 'header_logo');
+      });
+
+      data.header.logo = `img/header_logo.${headerLogoType}`
+  }
+  if(taskTitle) {
+    data.task.title = taskTitle;
+  }
+
+  if(taskData) {
+
+    // находим максимальный id
+    var taskId = Math.max.apply(Math,data.task.data.map(function(o){
+      return o.id;
+    }));
+
+    for(let i = 0; i < taskData.length; i++) {
+      taskId += +1;
+
+      var task = {
+        id: taskId,
+        text: taskData[i].text,
+        img: `img/task/img${taskId}.${taskData[i].imgType}`
+      };
+      data.task.data.push(task)
+      getImg(taskData[i].img, taskId, 'img/task/', taskData[i].imgType, 'img');
+    }
+  }
+
+  if(deleteTaskItem) {
+    for(var i = 0; i < deleteTaskItem.length; i++) {
+      data.task.data = data.task.data.filter(el => el.id !== deleteTaskItem[i]);
+      delPic('../data/img/task/', `img${deleteTaskItem[i]}`)
+    }
+  }
+
+  if(newsData) {
+
+    // находим максимальный id
+    var taskIdNews = Math.max.apply(Math,data.news.map(function(o){
+      return o.id;
+    }));
+
+    for(let i = 0; i < newsData.length; i++) {
+      taskIdNews += +1;
+
+      var news = {
+        id: taskIdNews,
+        text: newsData[i].text,
+        img: `img/news/img${taskIdNews}.${newsData[i].imgType}`
+      };
+      data.news.push(news)
+      getImg(newsData[i].img, taskIdNews, 'img/news/', newsData[i].imgType, 'img');
+    }
+  }
+
+  if(deleteNewsItem) {
+    for(var i = 0; i < deleteNewsItem.length; i++) {
+      data.news = data.news.filter(el => el.id !== deleteNewsItem[i]);
+      delPic('../data/img/news/', `img${deleteNewsItem[i]}`)
+    }
+  }
+
+  if(youtubeData) {
+    // находим максимальный id
+    var taskIdYoutube = Math.max.apply(Math,data.youtube.map(function(o){
+      return o.id;
+    }));
+
+    for(let i = 0; i < youtubeData.length; i++) {
+      taskIdYoutube += +1;
+
+      var youtube = {
+        id: taskIdYoutube,
+        text: youtubeData[i].text,
+        link: youtubeData[i].link
+      };
+      data.youtube.push(youtube)
+    }
+  }
+
+  if(deleteYoutubeItem) {
+    for(var i = 0; i < deleteYoutubeItem.length; i++) {
+      data.youtube = data.youtube.filter(el => el.id !== deleteYoutubeItem[i]);
+    }
+  }
+
+  if(projectTitle) {
+    data.project.title = projectTitle;
+  }
+
+  if(projectData) {
+
+    // находим максимальный id
+    var taskProjectId = Math.max.apply(Math,data.project.items.map(function(o){
+      return o.id;
+    }));
+
+    for(let i = 0; i < projectData.length; i++) {
+      taskProjectId += +1;
+
+      var project = {
+        id: taskProjectId,
+        title: projectData[i].title,
+        text: projectData[i].text,
+        img: `img/project/data/img${taskProjectId}.${projectData[i].imgType}`
+      };
+      data.project.items.push(project)
+      getImg(projectData[i].img, taskProjectId, 'img/project/data/', projectData[i].imgType, 'img');
+    }
+  }
+
+  if(deleteProjectItem) {
+    for(var i = 0; i < deleteProjectItem.length; i++) {
+      data.project.items = data.project.items.filter(el => el.id !== deleteProjectItem[i]);
+      delPic('../data/img/project/data/', `img${deleteProjectItem[i]}`)
+    }
+  }
+
+  if(statisticData) {
+
+    // находим максимальный id
+    var taskStatisticId = Math.max.apply(Math,data.statistic.map(function(o){
+      return o.id;
+    }));
+
+    for(let i = 0; i < statisticData.length; i++) {
+      taskStatisticId += +1;
+
+      var block = {
+        id: taskStatisticId,
+        text: statisticData[i].text,
+        count: statisticData[i].count,
+        img: `img/statistic/img${taskStatisticId}.${statisticData[i].imgType}`
+      };
+      data.statistic.push(block)
+      getImg(statisticData[i].img, taskStatisticId, 'img/statistic/', statisticData[i].imgType, 'img');
+    }
+  }
+
+  if(deleteStatisticItem) {
+    for(var i = 0; i < deleteStatisticItem.length; i++) {
+      data.statistic = data.statistic.filter(el => el.id !== deleteStatisticItem[i]);
+      delPic('../data/img/statistic/', `img${deleteStatisticItem[i]}`)
+    }
+  }
+
+  if(teemData) {
+
+    // находим максимальный id
+    var taskTeemId = Math.max.apply(Math,data.teem.map(function(o){
+      return o.id;
+    }));
+
+    for(let i = 0; i < teemData.length; i++) {
+      taskTeemId += +1;
+
+      var teem = {
+        id: taskTeemId,
+        name: teemData[i].name,
+        prof: teemData[i].prof,
+        social: teemData[i].social,
+        img: `img/teem/img${taskTeemId}.${teemData[i].imgType}`
+      };
+      data.teem.push(teem)
+      getImg(teemData[i].img, taskTeemId, 'img/teem/', teemData[i].imgType, 'img');
+    }
+  }
+
+  if(deleteTeemItem) {
+    for(var i = 0; i < deleteTeemItem.length; i++) {
+      data.teem = data.teem.filter(el => el.id !== deleteTeemItem[i]);
+      delPic('../data/img/teem/', `img${deleteTeemItem[i]}`)
+    }
+  }
+
+  if(mapTitle) {
+    data.map.title = mapTitle;
+  }
+
+  if(mapCoordinates) {
+    data.map.coordinates = mapCoordinates;
+  }
+
+  if(footerAddress) {
+    data.footer.address = footerAddress;
+  }
+
+  if(footerLogo) {
+    fs.readdir('../data/img', (err, files) => {
+      files.forEach((file) => {
+        let img = file.match(/footer_logo/)
+        if(img) {
+          console.log(img.input)
+          if(file == img.input) {
+            console.log(file)
+            fs.unlink(`${__dirname}/../data/img/${file}`, (err) => {
+              if (err) console.log(err);
+              else console.log("del pic", file);
+            });
+          }
+        }
+
+      });
+      getImg(footerLogo, null, 'img', footerLogoType, 'footer_logo');
+    });
+
+    data.footer.logo = `img/footer_logo.${footerLogoType}`
+  }
+
+  if(copy) {
+    data.copy = copy;
+  }
 
   var dataR = JSON.stringify(data);
   fs.writeFileSync("../data/data.json", dataR);
