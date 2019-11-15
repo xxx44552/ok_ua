@@ -129,8 +129,10 @@
         width: 100%;
 
         .yt-slider-element {
-            width: 100%;
-            background: url('../../img/youtube-1_400.png') no-repeat;
+            width: auto;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
             margin-left: 0;
 
             .fa-youtube {
