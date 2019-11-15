@@ -22,75 +22,75 @@ const NewsSlider = () => {
 
     return (
         <Slider className="slider" {...settings}>
-            <div className="slider-element">
-                <div className="slider-text-block">
-                    <p className="slider-text slider-text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider-text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
+            <div className="slider__element">
+                <div className="slider__text-block">
+                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
+                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
                         громадськості щодо проблем суспільства, навколишнього середовища та інших 
                         існуючих екологічних, культурних проблем
                     </p>
 
-                    <button className="slider-button">Дізнатися</button>
+                    <button className="slider__button">Дізнатися</button>
                 </div>
             </div>
 
-            <div className="slider-element slider-element--green">
-                <div className="slider-text-block">
-                    <p className="slider-text slider-text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider-text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
+            <div className="slider__element slider__element--green">
+                <div className="slider__text-block">
+                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
+                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
                         громадськості щодо проблем суспільства, навколишнього середовища та інших 
                         існуючих екологічних, культурних проблем
                     </p>
 
-                    <button className="slider-button">Дізнатися</button>
+                    <button className="slider__button">Дізнатися</button>
                 </div>
             </div>
 
-            <div className="slider-element slider-element--yellow">
-                <div className="slider-text-block">
-                    <p className="slider-text slider-text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider-text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
+            <div className="slider__element slider__element--yellow">
+                <div className="slider__text-block">
+                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
+                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
                         громадськості щодо проблем суспільства, навколишнього середовища та інших 
                         існуючих екологічних, культурних проблем
                     </p>
 
-                    <button className="slider-button">Дізнатися</button>
+                    <button className="slider__button">Дізнатися</button>
                 </div>
             </div>
 
-            <div className="slider-element slider-element--blue">
-                <div className="slider-text-block">
-                    <p className="slider-text slider-text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider-text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
+            <div className="slider__element slider__element--blue">
+                <div className="slider__text-block">
+                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
+                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
                         громадськості щодо проблем суспільства, навколишнього середовища та інших 
                         існуючих екологічних, культурних проблем
                     </p>
 
-                    <button className="slider-button">Дізнатися</button>
+                    <button className="slider__button">Дізнатися</button>
                 </div>
             </div>
 
-            <div className="slider-element slider-element--black">
-                <div className="slider-text-block">
-                    <p className="slider-text slider-text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider-text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
+            <div className="slider__element slider__element--black">
+                <div className="slider__text-block">
+                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
+                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
                         громадськості щодо проблем суспільства, навколишнього середовища та інших 
                         існуючих екологічних, культурних проблем
                     </p>
 
-                    <button className="slider-button">Дізнатися</button>
+                    <button className="slider__button">Дізнатися</button>
                 </div>
             </div>
 
-            <div className="slider-element slider-element--orange">
-                <div className="slider-text-block">
-                    <p className="slider-text slider-text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider-text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
+            <div className="slider__element slider__element--orange">
+                <div className="slider__text-block">
+                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
+                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
                         громадськості щодо проблем суспільства, навколишнього середовища та інших 
                         існуючих екологічних, культурних проблем
                     </p>
 
-                    <button className="slider-button">Дізнатися</button>
+                    <button className="slider__button">Дізнатися</button>
                 </div>
             </div>
         </Slider>
