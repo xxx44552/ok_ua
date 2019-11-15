@@ -5,7 +5,8 @@ import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
 import Index from './components/login'
 import Admin from './components/admin'
-import Test from "./test";
+import Header from "./components/header/Header.js";
+import MainInfo from "./components/mainInfo/MainInfo";
 import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
 
@@ -41,9 +42,15 @@ class App extends React.Component {
         } />
         <Route exact={true} path='/' render={() =>
           <>
+            <div className="container-main">
+              <div className="background-for-modal" >
+                <Header/>
+                <MainInfo/>
+              </div>
+            </div>
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
-            <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
+              <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
           </>
         } />
