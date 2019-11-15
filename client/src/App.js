@@ -6,8 +6,18 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Index from './components/login'
 import Admin from './components/admin'
 import Test from "./test";
+<<<<<<< HEAD
 import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
+=======
+import Header from './components/header/Header'
+import './commonStyles/commonStyles.scss'
+import MainInfo from './components/mainInfo/MainInfo'
+import Tasks from './components/tasks/Tasks';
+import JoinModal from './components/joinModal/joinModal'
+import WriteToUsModal from './components/writeToUsModal/writeToUsModal'
+import CharContribModal from './components/charContribModal/charContribModal'
+>>>>>>> Header
 
 class App extends React.Component {
 
@@ -22,6 +32,7 @@ class App extends React.Component {
   componentDidMount() {
     const { fetchData } = this.props;
     fetchData();
+
   }
 
 
@@ -32,6 +43,7 @@ class App extends React.Component {
     if (error) return <p>{error}</p>;
 
     return (
+
       <BrowserRouter>
         <Route exact={true} path='/login' render={() =>
           <Index update={this.update} />
@@ -44,6 +56,32 @@ class App extends React.Component {
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
             <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
+        <Route exact={true} path='/login' render={()=>
+            <Index update={this.update}/>
+        }/>
+        <Route exact={true} path='/admin' render={()=>
+            <Admin />
+        }/>
+        <Route exact={true} path='/' render={()=>
+            <div className="container-main">
+              <div className="background-for-modal" >
+                <Header/>
+                <MainInfo/>
+                {/* <WriteToUsModal/> */}
+                {/* <CharContribModal/> */}
+                <Tasks/>
+              </div>
+
+              
+              {/* <Test/>
+              {
+                tasks.map(({id, text, img}) => {
+                  return <div key={id}>
+                    <img alt='pic' src={img}/>
+                    <p>{text}</p>
+                  </div>
+                })
+              } */}
             </div>
           </>
         } />
