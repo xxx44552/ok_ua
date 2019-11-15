@@ -1,17 +1,33 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
-import './mainInfoStyles.scss'
+import './mainInfoStyles.scss';
+import WriteToUsModal from '../writeToUsModal/writeToUsModal'
 
-function MainInfo(props) {
-    console.log(props.title)
-    return(
-        <div className="info-wrapper">
-            <div className="text-wrapper">
-                <p className="title"> {props.title} </p>
-                <p className="text"> {props.text} </p>
+class MainInfo extends React.Component{
+
+    state = {writeToUsModalIsOpened: false}
+
+    handleWriteToUsOpen = () => this.setState({ writeToUsModalIsOpened: true })
+    handleWriteToUsClose = () => this.setState({ writeToUsModalIsOpened: false })
+
+    render() {
+        return(
+            <div className="info-wrapper">
+                <div className="text-wrapper">
+                    <p className="title"> {this.props.title} </p>
+                    <p className="text"> {this.props.text} </p>
+                </div>
+                <button className="text-us-button" onClick={this.handleWriteToUsOpen}>Напишіть нам!</button>
+                {!!this.state.writeToUsModalIsOpened &&
+                    (
+                        <WriteToUsModal
+                        writeToUsModalonClose={this.handleWriteToUsClose}
+                        />
+                    )
+                }
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default connect(

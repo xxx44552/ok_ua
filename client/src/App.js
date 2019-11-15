@@ -11,6 +11,8 @@ import './commonStyles/commonStyles.scss'
 import MainInfo from './components/mainInfo/MainInfo'
 import Tasks from './components/tasks/Tasks';
 import JoinModal from './components/joinModal/joinModal'
+import WriteToUsModal from './components/writeToUsModal/writeToUsModal'
+import CharContribModal from './components/charContribModal/charContribModal'
 
 
 class App extends React.Component{
@@ -47,10 +49,11 @@ class App extends React.Component{
         }/>
         <Route exact={true} path='/' render={()=>
             <div className="container-main">
-              <div className="background-for-modal">
+              <div className="background-for-modal" >
                 <Header/>
                 <MainInfo/>
-                <JoinModal/>
+                {/* <WriteToUsModal/> */}
+                {/* <CharContribModal/> */}
                 <Tasks/>
               </div>
 

@@ -25,7 +25,7 @@
         display: flex;
         flex-wrap: wrap;
         max-width: inherit;
-        height: auto;
+        height: 300px;
         overflow: hidden;
         justify-content: space-between;
         margin-bottom: 46px;
@@ -36,6 +36,10 @@
             height: 70px;
             justify-content: space-between;
             margin: 11px 45px 11px 0 !important;
+
+            img {
+                margin-right: 25px;
+            }
         }
 
     }

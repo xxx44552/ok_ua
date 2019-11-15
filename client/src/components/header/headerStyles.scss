@@ -62,6 +62,13 @@
                 flex-direction: column;
                 position: relative;
 
+                .text {
+                    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                };
+
 
                 &::after {
                     position: absolute;
