@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
-import Index from './components/login'
 import Admin from './components/admin'
 import Header from "./components/header/Header.js";
 import MainInfo from "./components/mainInfo/MainInfo";
@@ -12,6 +11,7 @@ import OurProjects from './components/OurProjects';
 import Login from './components/login/';
 import News from './components/News/News';
 import Youtube from './components/Youtube/Youtube';
+import Spinner from './components/spinner'
 
 class App extends React.Component {
 
@@ -32,13 +32,13 @@ class App extends React.Component {
   render() {
     const { pending, error, tasks, teem, statistic, map } = this.props;
 
-    if (pending) return <p>Загрузка</p>;
+    if (pending) return <Spinner/>
     if (error) return <p>{error}</p>;
 
     return (
       <BrowserRouter>
         <Route exact={true} path='/login' render={() =>
-          <Index update={this.update} />
+          <Login />
         } />
         <Route exact={true} path='/admin' render={() =>
           <Admin />
