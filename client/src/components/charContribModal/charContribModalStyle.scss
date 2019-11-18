@@ -1,3 +1,6 @@
+@import '../../commonStyles/mixins.scss';
+
+
 .charity-modal-background {
     display: flex; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -24,11 +27,15 @@
         left: 25%;
         background: #ffffff;
 
+        @include laptop {
+                bottom: -100px;
+        }
+
         .inner-background1 {
-            width: 44.1%;
+            width: 59.3%;
             height: 282px;
             position: fixed;
-            bottom: 120px;
+            bottom: 200px;
             margin: 15% auto;
             left: 25%;
             z-index: 2;
