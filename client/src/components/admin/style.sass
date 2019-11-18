@@ -1,5 +1,5 @@
 .admin
-    padding: 20px 20px 50px
+    padding: 20px 20px 75px
 
     .admin-btn
         padding: 4px 10px
@@ -14,7 +14,38 @@
         width: 70%
         height: 100px
 
-    .admin-save
-        position: fixed
-        bottom: 20px
-        right: 20px
+
+.admin-btns
+    border-top: 2px solid gray
+    padding: 20px 20px
+    position: fixed
+    bottom: 0
+    left: 0
+    background-color: #fff
+    display: flex
+    justify-content: space-between
+    width: 100%
+
+
+.close-admin
+    position: fixed
+    top: 0
+    right: 20px
+    font-size: 46px
+    cursor: pointer
+    color: red
+    font-weight: bold
+    background-color: #fff
+    text-decoration: none
+
+.admin-save, .logout
+    background-color: green
+    padding: 5px 20px
+    border: none
+    border-radius: 3px
+    color: #fff
+    cursor: pointer
+
+.logout
+    background-color: red
+    text-decoration: none

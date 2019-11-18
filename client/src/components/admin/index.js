@@ -153,7 +153,11 @@ class Admin extends React.Component {
             <label>Copy text - </label>
             <textarea onChange={(e)=>this.props.setCopy(e.target.value)} defaultValue={copy}></textarea>
             <hr />
-            <input className='admin-save' onChange={this.changeValue}  type='submit' value='Сохранить'/>
+            <div className="admin-btns">
+              <a href='/logout' className="logout">Выйти</a>
+              <a href='/' className="close-admin">×</a>
+              <input className='admin-save' onChange={this.changeValue}  type='submit' value='Сохранить'/>
+            </div>
           </form>
         </div>
       </>
