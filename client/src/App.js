@@ -3,19 +3,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
-<<<<<<< HEAD
 import Index from './components/login'
 import Admin from './components/admin'
 import Header from "./components/header/Header.js";
 import MainInfo from "./components/mainInfo/MainInfo";
 import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
-=======
-import Login from './components/login/login';
-import Admin from './components/admin';
+import Login from './components/login/';
 import News from './components/News/News';
 import Youtube from './components/Youtube/Youtube';
->>>>>>> rb/ok-ua_sliders
 
 class App extends React.Component {
 
