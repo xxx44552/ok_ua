@@ -3,12 +3,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
+<<<<<<< HEAD
 import Index from './components/login'
 import Admin from './components/admin'
 import Header from "./components/header/Header.js";
 import MainInfo from "./components/mainInfo/MainInfo";
 import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
+=======
+import Login from './components/login/login';
+import Admin from './components/admin';
+import News from './components/News/News';
+import Youtube from './components/Youtube/Youtube';
+>>>>>>> rb/ok-ua_sliders
 
 class App extends React.Component {
 
@@ -48,6 +55,8 @@ class App extends React.Component {
                 <MainInfo/>
               </div>
             </div>
+            <News news={this.props.news} />
+            <Youtube />
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
               <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
@@ -66,8 +75,8 @@ const mapStateToProps = state => ({
   project: state.data.project,
   statistic: state.data.statistic,
   teem: state.data.teem,
-  map: state.data.map
-
+  map: state.data.map,
+  news: state.data.news
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
