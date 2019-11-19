@@ -56,7 +56,7 @@ class App extends React.Component {
               </div>
             </div>
             <News news={this.props.news} />
-            <Youtube />
+            <Youtube youtube={this.props.youtube} />
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
               <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
@@ -76,7 +76,8 @@ const mapStateToProps = state => ({
   statistic: state.data.statistic,
   teem: state.data.teem,
   map: state.data.map,
-  news: state.data.news
+  news: state.data.news,
+  youtube: state.data.youtube
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

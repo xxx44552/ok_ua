@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from 'react-responsive';
 
-const Youtube = () => {
+const Youtube = (props) => {
     const settings = {
         dots: false,
         infinite: true,
@@ -32,45 +32,81 @@ const Youtube = () => {
     return (
         <Slider className="yt-slider" {...settings}>
             <div className="yt-slider__element">
-                <i className="fab fa-youtube"></i>
-                <div className="yt-slider__text-block">
-                    <p className="yt-slider__text">Підтримки членам Організації</p>
-                </div>
+                {props.youtube.map(item => (
+                    <div key={item.id}>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <div className="yt-slider__text-block">
+                            <p className="yt-slider__text">{item.text}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
             
             <div className="yt-slider__element yt-slider__element--second">
-                <i className="fab fa-youtube"></i>
-                <div className="yt-slider__text-block">
-                    <p className="yt-slider__text">Підтримки членам Організації</p>
-                </div>
+                {props.youtube.map(item => (
+                    <div key={item.id}>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <div className="yt-slider__text-block">
+                            <p className="yt-slider__text">{item.text}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
             
             <div className="yt-slider__element yt-slider__element--third">
-                <i className="fab fa-youtube"></i>
-                <div className="yt-slider__text-block">
-                    <p className="yt-slider__text">Підтримки членам Організації</p>
-                </div>
+                {props.youtube.map(item => (
+                    <div key={item.id}>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <div className="yt-slider__text-block">
+                            <p className="yt-slider__text">{item.text}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
 
             <div className="yt-slider__element yt-slider__element--fourth">
-                <i className="fab fa-youtube"></i>
-                <div className="yt-slider__text-block">
-                    <p className="yt-slider__text">Підтримки членам Організації</p>
-                </div>
+                {props.youtube.map(item => (
+                    <div key={item.id}>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <div className="yt-slider__text-block">
+                            <p className="yt-slider__text">{item.text}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
             
             <div className="yt-slider__element yt-slider__element--fifth">
-                <i className="fab fa-youtube"></i>
-                <div className="yt-slider__text-block">
-                    <p className="yt-slider__text">Підтримки членам Організації</p>
-                </div>
+                {props.youtube.map(item => (
+                    <div key={item.id}>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <div className="yt-slider__text-block">
+                            <p className="yt-slider__text">{item.text}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
             
             <div className="yt-slider__element yt-slider__element--sixth">
-                <i className="fab fa-youtube"></i>
-                <div className="yt-slider__text-block">
-                    <p className="yt-slider__text">Підтримки членам Організації</p>
-                </div>
+                {props.youtube.map(item => (
+                    <div key={item.id}>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <div className="yt-slider__text-block">
+                            <p className="yt-slider__text">{item.text}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </Slider>
     );
