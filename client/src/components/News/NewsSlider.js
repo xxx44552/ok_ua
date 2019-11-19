@@ -22,71 +22,15 @@ const NewsSlider = (props) => {
 
     return (
         <Slider className="slider" {...settings}>
-            <div>
-                {props.news.map(item => (
-                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
-                        <div className="slider__text-block">
-                            <p className="slider__text">{item.text}</p>
-                            <button className="slider__button">Дізнатися</button>
-                        </div>
+            {props.news.map(item => (
+                <div className="slider__element" key={item.id}>
+                    <div className="slider__text-block">
+                        <img src={item.img}/>
+                        <p className="slider__text">{item.text}</p>
+                        <button className="slider__button">Дізнатися</button>
                     </div>
-                ))}
-            </div>
-
-            <div>
-                {props.news.map(item => (
-                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
-                        <div className="slider__text-block">
-                            <p className="slider__text">{item.text}</p>
-                            <button className="slider__button">Дізнатися</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div>
-                {props.news.map(item => (
-                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
-                        <div className="slider__text-block">
-                            <p className="slider__text">{item.text}</p>
-                            <button className="slider__button">Дізнатися</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div>
-                {props.news.map(item => (
-                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
-                        <div className="slider__text-block">
-                            <p className="slider__text">{item.text}</p>
-                            <button className="slider__button">Дізнатися</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div>
-                {props.news.map(item => (
-                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
-                        <div className="slider__text-block">
-                            <p className="slider__text">{item.text}</p>
-                            <button className="slider__button">Дізнатися</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div>
-                {props.news.map(item => (
-                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
-                        <div className="slider__text-block">
-                            <p className="slider__text">{item.text}</p>
-                            <button className="slider__button">Дізнатися</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </Slider>
     );
 }
