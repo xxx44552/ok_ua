@@ -1,3 +1,6 @@
+@import '../../commonStyles/mixins.scss';
+
+
 .header-wrapper {
     display: flex;
     width: 100%;
@@ -18,6 +21,11 @@
         text-transform: uppercase;
 
         color: #00A3E6;
+        img {
+            @include laptop {
+                width: 200px;
+            }
+        }
     }
     .right-side {
         display: flex;
@@ -25,6 +33,10 @@
         align-items: flex-end;
         flex-direction: column;
         width: 570px;
+
+        @include laptop {
+            width: 415px;
+        }
 
         .contact-info {
             display: flex;
@@ -123,7 +135,7 @@
             }
 
             .about {
-
+                white-space: nowrap;
                 &:hover {
                     text-decoration: underline;
                 }
