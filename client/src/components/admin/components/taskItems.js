@@ -51,7 +51,7 @@ class TaskItems extends React.Component {
     console.log(items)
     return (
       <React.Fragment>
-        <div>
+        <div className='task-wrap'>
           {
             items.map(({id, text, img}) => {
               return <div key={text} className='admin-task'>

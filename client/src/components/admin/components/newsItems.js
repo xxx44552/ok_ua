@@ -51,7 +51,7 @@ class NewsItems extends React.Component {
     console.log(items, '-------------')
     return (
         <React.Fragment>
-          <div>
+          <div className='admin-news-wrap'>
             {
               items.map(({id, text, img}) => {
                 return <div key={id} className='admin-news'>
