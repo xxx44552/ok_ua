@@ -12,47 +12,47 @@
       {
         "id": 0,
         "text": "Об’єднання однодумців",
-        "img": "/img/task/img1.png"
+        "img": "/img/task/img0.png"
       },
       {
         "id": 1,
         "text": "Розвиткок екологічномого туризму",
-        "img": "/img/task/img2.png"
+        "img": "/img/task/img1.png"
       },
       {
         "id": 2,
         "text": "Поширення народних традицій та ремесел",
-        "img": "/img/task/img3.png"
+        "img": "/img/task/img2.png"
       },
       {
         "id": 3,
         "text": "Підтримки членів Організації у сфері праці",
-        "img": "/img/task/img4.png"
+        "img": "/img/task/img3.png"
       },
       {
         "id": 4,
         "text": "Підтримка і захист молоді, сім’ї та дитини",
-        "img": "/img/task/img5.png"
+        "img": "/img/task/img4.png"
       },
       {
         "id": 5,
         "text": "Сприяння екологічній та культурній просвіті ",
-        "img": "/img/task/img6.png"
+        "img": "/img/task/img5.png"
       },
       {
         "id": 6,
         "text": "Підтримка наукових і культурних досліджень ",
-        "img": "/img/task/img7.png"
+        "img": "/img/task/img6.png"
       },
       {
         "id": 7,
         "text": "Підтримка будівельних та реставраційних проектів",
-        "img": "/img/task/img8.png"
+        "img": "/img/task/img7.png"
       },
       {
         "id": 8,
         "text": "Розвиток природоохоронної справи",
-        "img": "/img/task/img9.png"
+        "img": "/img/task/img8.png"
       }
     ]
   },
