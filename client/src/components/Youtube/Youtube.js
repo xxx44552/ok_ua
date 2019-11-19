@@ -31,83 +31,21 @@ const Youtube = (props) => {
 
     return (
         <Slider className="yt-slider" {...settings}>
+          {props.youtube.map(item => (
             <div className="yt-slider__element">
-                {props.youtube.map(item => (
-                    <div key={item.id}>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                        <div className="yt-slider__text-block">
-                            <p className="yt-slider__text">{item.text}</p>
-                        </div>
-                    </div>
-                ))}
+              <div className='yb-wrap' key={item.id}>
+                  <iframe
+                      src={item.link}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen>
+                  </iframe>
+                  <div className="yt-slider__text-block">
+                      <p className="yt-slider__text">{item.text}</p>
+                  </div>
+              </div>
             </div>
-            
-            <div className="yt-slider__element yt-slider__element--second">
-                {props.youtube.map(item => (
-                    <div key={item.id}>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                        <div className="yt-slider__text-block">
-                            <p className="yt-slider__text">{item.text}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            
-            <div className="yt-slider__element yt-slider__element--third">
-                {props.youtube.map(item => (
-                    <div key={item.id}>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                        <div className="yt-slider__text-block">
-                            <p className="yt-slider__text">{item.text}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div className="yt-slider__element yt-slider__element--fourth">
-                {props.youtube.map(item => (
-                    <div key={item.id}>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                        <div className="yt-slider__text-block">
-                            <p className="yt-slider__text">{item.text}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            
-            <div className="yt-slider__element yt-slider__element--fifth">
-                {props.youtube.map(item => (
-                    <div key={item.id}>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                        <div className="yt-slider__text-block">
-                            <p className="yt-slider__text">{item.text}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            
-            <div className="yt-slider__element yt-slider__element--sixth">
-                {props.youtube.map(item => (
-                    <div key={item.id}>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                        <div className="yt-slider__text-block">
-                            <p className="yt-slider__text">{item.text}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
+          ))}
         </Slider>
     );
 }

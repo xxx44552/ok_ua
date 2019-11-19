@@ -1,14 +1,11 @@
-@import '../../commonStyles/mixins.scss';
-
-
 .header-wrapper {
     display: flex;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 26px 0;
     justify-content: space-between;
     z-index: 1;
+    max-width: 1200px;
 
     @include laptop {
         max-width: 768px;
@@ -26,11 +23,6 @@
         text-transform: uppercase;
 
         color: #00A3E6;
-        img {
-            @include laptop {
-                width: 200px;
-            }
-        }
     }
     .right-side {
         display: flex;
@@ -38,10 +30,6 @@
         align-items: flex-end;
         flex-direction: column;
         width: 570px;
-
-        @include laptop {
-            width: 415px;
-        }
 
         .contact-info {
             display: flex;
@@ -140,7 +128,7 @@
             }
 
             .about {
-                white-space: nowrap;
+
                 &:hover {
                     text-decoration: underline;
                 }

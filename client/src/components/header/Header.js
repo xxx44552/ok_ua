@@ -5,7 +5,7 @@ import DropDown from '../dropdown/dropdown'
 import JoinModal from '../joinModal/joinModal'
 
 
-class Header extends React.Component{
+class Header extends React.Component {
 
         state = {
             modalIsOpened: false,

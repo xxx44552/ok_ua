@@ -7,7 +7,7 @@
 
     &__element {
         width: 308px;
-        height: 400px;
+        height: 245px;
         margin: 0 auto;
         background: url('../../img/youtube-1.png') no-repeat;
         position: relative;
@@ -85,7 +85,7 @@
         transform: translateX(160%);
         position: absolute;
         right: 10px;
-        top: 200px;
+        top: 110px;
 
         &:before {
             content: url('../../img/youtube-right.png');
@@ -96,7 +96,7 @@
         transform: translateX(-280%);
         position: absolute;
         left: 10px;
-        top: 200px;
+        top: 110px;
 
         &:before {
             content: url('../../img/youtube-left.png');
@@ -168,5 +168,13 @@
 
     .slick-dots {
         transform: translateY(160%);
+    }
+}
+
+.yb-wrap {
+
+
+    iframe {
+        width: 308px;
     }
 }

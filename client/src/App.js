@@ -6,13 +6,14 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Admin from './components/admin'
 import Header from "./components/header/Header.js";
 import MainInfo from "./components/mainInfo/MainInfo";
-import Tasks from './components/tasks/Tasks';
 import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
 import Login from './components/login/';
 import News from './components/News/News';
 import Youtube from './components/Youtube/Youtube';
+import Footer from './components/Footer/Footer';
 import Spinner from './components/spinner'
+
 
 class App extends React.Component {
 
@@ -27,7 +28,6 @@ class App extends React.Component {
   componentDidMount() {
     const { fetchData } = this.props;
     fetchData();
-
   }
 
 
@@ -38,7 +38,6 @@ class App extends React.Component {
     if (error) return <p>{error}</p>;
 
     return (
-
       <BrowserRouter>
         <Route exact={true} path='/login' render={() =>
           <Login />
@@ -52,7 +51,6 @@ class App extends React.Component {
               <div className="background-for-modal" >
                 <Header/>
                 <MainInfo/>
-                <Tasks/>
               </div>
             </div>
             <News news={this.props.news} />
@@ -61,6 +59,7 @@ class App extends React.Component {
             <div className="wrapper">
               <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
+            <Footer />
           </>
         } />
       </BrowserRouter>
