@@ -110,12 +110,12 @@ class Admin extends React.Component {
               <label>Header title - </label>
               <input onChange={(e)=>this.props.setHeaderTitle(e.target.value)} name='headerTitle' type='text' defaultValue={headerTitle} />
             </div>
-            <div>
-              <label>Header text - </label>
+            <div className='header-wrap'>
+              <label>Header text -</label>
               <textarea onChange={(e)=>this.props.setHeaderText(e.target.value)} name='headerText' defaultValue={headerText}></textarea>
             </div>
             <div>
-              <p>Header logo</p>
+              <p className='input-title'>Header logo</p>
               <HeaderLogo/>
             </div>
             <h2>Task</h2>

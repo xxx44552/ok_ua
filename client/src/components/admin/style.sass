@@ -1,6 +1,23 @@
 .admin
     padding: 20px 20px 75px
 
+    .admin-error
+        color: red
+        margin: 5px 0
+
+    .header-wrap
+        display: flex
+        align-items: flex-start
+        margin-bottom: 20px
+
+    input[type='file']
+        margin: 10px 0
+
+    input[type='text'], input[type='number']
+        line-height: 28px
+        padding: 0 10px
+        margin: 10px 0
+
     .admin-btn
         padding: 4px 10px
         border-radius: 3px
@@ -10,10 +27,27 @@
         cursor: pointer
 
     textarea
-        margin-top: 20px
+        margin-top: 10px
         width: 70%
         height: 100px
 
+
+    label
+        margin: 10px 20px 10px 0
+        display: inline-block
+        text-decoration: underline
+
+    .header-wrap-logo
+        display: flex
+        flex-direction: column
+
+        img
+            max-width: 300px
+            display: block
+            margin: 10px 0
+
+    .input-title
+        text-decoration: underline
 
 .admin-btns
     border-top: 2px solid gray
