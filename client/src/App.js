@@ -46,7 +46,7 @@ class App extends React.Component {
         } />
         <Route exact={true} path='/' render={() =>
           <>
-            {/* <div className="container-main">
+            <div className="container-main">
               <div className="background-for-modal" >
                 <Header/>
                 <MainInfo/>
@@ -57,7 +57,7 @@ class App extends React.Component {
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
               <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
-            </div> */}
+            </div>
             <Footer />
           </>
         } />

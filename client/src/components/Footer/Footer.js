@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '../styles/OurProjects.scss';
 import { connect } from 'react-redux';
+import SectionArticle from '../SliderSection/SectionArticle';
 
 function Footer(props) {
     return (
         <>
             <section className="section footer__section">
                 <div className="section__container footer__container">
-                    <div className="section__row">
+                    <div className="section__row footer__row">
                         <div className="section__col footer__col footer__col-1">
                             <h4 className="footer__article footer__article--left">Контакти</h4>
                             <div className="footer__contact-wrap">
@@ -33,14 +34,6 @@ function Footer(props) {
                         </div>
                         <div className="section__col footer__col footer__col-2">
                             <img src={props.footer.logo} className="footer__logo"></img>
-                            <nav className="footer__nav">
-                                <ul className="footer__nav-list">
-                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Про нас</a></li>
-                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Новини</a></li>
-                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Проекти</a></li>
-                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Контакти</a></li>
-                                </ul>
-                            </nav>
                         </div>
                         <div className="section__col footer__col footer__col-3">
                             <h4 className="footer__article footer__article--right">Ми в соцмережах</h4>
@@ -70,6 +63,18 @@ function Footer(props) {
                             </div>
                         </div>
                     </div>
+                    <div className="section__row footer__row">
+                        <div className="section__col section__col--w-100 footer__col">
+                            <nav className="footer__nav">
+                                <ul className="footer__nav-list">
+                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Про нас</a></li>
+                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Новини</a></li>
+                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Проекти</a></li>
+                                    <li className="footer__nav-item"><a className="footer__nav-link" href="#">Контакти</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className="section bottom__section section__colored">
@@ -77,6 +82,71 @@ function Footer(props) {
                     <div className="section__row">
                         <div className="section__col section__col--w-100">
                             <p className="bottom__text">{props.copy}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="section footer__section--adaptive">
+                <div className="section__container">
+                    <div className="section__row">
+                        <div className="section__col section__col--w-100">
+                            <SectionArticle textContent={'Контакти'} />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="section contacts__section--adaptive section__colored">
+                <div className="section__container">
+                    <div className="section__row">
+                        <div className="section__col section__col--w-100">
+                            <div className="footer__contact-wrap">
+                                <svg className="footer__contact-icon" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.4544 13.9829L16.1008 11.6293C15.4534 10.9819 14.3945 10.9819 13.7471 11.6293L12.679 12.6974C12.1889 13.1876 11.3889 13.1876 10.8941 12.6974L6.25165 8.05958C5.75688 7.56481 5.75688 6.76948 6.25165 6.27471L7.31979 5.20657C7.96715 4.55921 7.9764 3.50494 7.31979 2.85296L4.96618 0.508591C4.31882 -0.138769 3.25992 -0.138769 2.61257 0.508591C2.13167 0.980238 1.97445 1.13745 1.75713 1.35016C-0.582616 3.6899 -0.582616 7.50007 1.75713 9.83982L9.10928 17.192C11.4536 19.5363 15.2546 19.541 17.5989 17.192L18.4544 16.3365C19.1017 15.6892 19.1017 14.6349 18.4544 13.9829ZM3.39864 1.28542C3.61597 1.06809 3.9674 1.06809 4.18472 1.28542L6.53834 3.62979C6.75567 3.84712 6.75567 4.19854 6.53834 4.41587L6.1453 4.80891L3.0056 1.67384L3.39864 1.28542ZM9.89073 16.4105L2.53858 9.05836C0.730599 7.24575 0.628871 4.402 2.2334 2.47379L5.36384 5.59961C4.54077 6.53366 4.57776 7.95322 5.46557 8.84103L10.1034 13.4835C10.9912 14.3713 12.4108 14.4083 13.3449 13.5853L16.4753 16.7157C14.5517 18.3156 11.7126 18.2324 9.89073 16.4105ZM17.6683 15.5551L17.2753 15.9481L14.1356 12.8084L14.5286 12.4154C14.7459 12.1981 15.0974 12.1981 15.3147 12.4154L17.6683 14.769C17.8856 14.9863 17.8856 15.3377 17.6683 15.5551Z" fill="black" />
+                                </svg>
+                                <a className="footer__contact-link" href="tel:+380674345652">+38(067) 434 56 52</a>
+                            </div>
+                            <div className="footer__contact-wrap">
+                                <svg width="14" height="19" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.67969 0C2.99658 0 0 2.99658 0 6.67969C0 7.92285 0.343262 9.13818 0.997314 10.1912L6.29932 18.7356C6.40137 18.8979 6.57764 19 6.77246 19H6.7771C6.97192 19 7.15283 18.8979 7.25024 18.731L12.4177 10.103C13.0347 9.0686 13.3594 7.88574 13.3594 6.67969C13.3594 2.99658 10.3628 0 6.67969 0ZM11.4622 9.53247L6.76318 17.3718L1.9436 9.60669C1.40088 8.72998 1.104 7.71875 1.104 6.67969C1.104 3.60889 3.60889 1.104 6.67969 1.104C9.75049 1.104 12.2507 3.60889 12.2507 6.67969C12.2507 7.68628 11.9771 8.66968 11.4622 9.53247Z" fill="black" />
+                                    <path d="M6.67969 3.33984C4.83813 3.33984 3.33984 4.83813 3.33984 6.67969C3.33984 8.50732 4.81494 10.0195 6.67969 10.0195C8.56763 10.0195 10.0195 8.48877 10.0195 6.67969C10.0195 4.83813 8.52124 3.33984 6.67969 3.33984ZM6.67969 8.91553C5.4458 8.91553 4.44385 7.91357 4.44385 6.67969C4.44385 5.45044 5.45044 4.44385 6.67969 4.44385C7.90894 4.44385 8.91089 5.45044 8.91089 6.67969C8.91089 7.89038 7.93213 8.91553 6.67969 8.91553Z" fill="black" />
+                                </svg>
+                                <a className="footer__contact-link">{props.footer.address}</a>
+                            </div>
+                            <div className="footer__contact-wrap">
+                                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 0.55H17C17.8008 0.55 18.45 1.19919 18.45 2V11.793C18.45 12.5938 17.8008 13.243 17 13.243H2C1.19919 13.243 0.55 12.5938 0.55 11.793V2C0.55 1.19919 1.19919 0.55 2 0.55Z" stroke="black" stroke-width="1.1" />
+                                    <path d="M1 1.5L7 7.14706M18 1.5L12 7.14706M18 13L12 7.14706M12 7.14706L10.8707 8.2099C10.1006 8.9347 8.89937 8.9347 8.12927 8.2099L7 7.14706M7 7.14706L1 13" stroke="black" stroke-width="1.2" />
+                                </svg>
+                                <a className="footer__contact-link" href="mailto:akp.shevchenko@gmail.com">akp.shevchenko@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="section bottom__section--adaptive">
+                <div className="section__container">
+                    <div className="section__row bottom__row--adaptive">
+                        <div className="section__col">
+                            <button className="bottom__button">
+                                <svg width="32" height="18" viewBox="0 0 32 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="32" height="2" rx="1" fill="#A6A8A9" />
+                                    <rect y="8" width="32" height="2" rx="1" fill="#A6A8A9" />
+                                    <rect y="16" width="32" height="2" rx="1" fill="#A6A8A9" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="section__col">
+                        <img src={props.footer.logo} className="footer__logo"></img>
+                        </div>
+                        <div className="section__col">
+                            <button className="bottom__button">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="3.5" cy="3.5" r="3.5" fill="#A6A8A9" />
+                                    <circle cx="3.5" cy="26.5" r="3.5" fill="#A6A8A9" />
+                                    <circle cx="26.5" cy="14.5" r="3.5" fill="#A6A8A9" />
+                                    <path d="M3.5 3.5L26.5 14.5L3.5 27" stroke="#A6A8A9" stroke-width="2" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
