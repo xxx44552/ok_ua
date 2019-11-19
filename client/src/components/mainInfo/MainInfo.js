@@ -14,7 +14,7 @@ class MainInfo extends React.Component{
         return(
             <>
             <div className="info-wrapper">
-                <img className="background-img" src="./static/background.png"/>
+                <img className="background-img" src="./static/background_laptop.png"/>
                 <img className="background-tablet-img" src="./static/background_tablet.png"/>
                 <div className="text-wrapper">
                     <p className="title"> {this.props.title} </p>
