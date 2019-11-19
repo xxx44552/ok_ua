@@ -4,9 +4,10 @@
 .tasks-wrapper {
     display: flex;
     flex-direction: column;
-    padding: 60px 44px;
+    padding: 60px 0;
     max-width: 1111px;
     z-index: 1;
+    margin: 0 auto;
 
     @include laptop {
         padding: 60px 25px;
