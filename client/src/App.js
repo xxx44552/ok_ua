@@ -11,7 +11,9 @@ import OurProjects from './components/OurProjects';
 import Login from './components/login/';
 import News from './components/News/News';
 import Youtube from './components/Youtube/Youtube';
+import Footer from './components/Footer/Footer';
 import Spinner from './components/spinner'
+
 
 class App extends React.Component {
 
@@ -52,11 +54,12 @@ class App extends React.Component {
               </div>
             </div>
             <News news={this.props.news} />
-            <Youtube />
+            <Youtube youtube={this.props.youtube} />
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
               <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
+            <Footer />
           </>
         } />
       </BrowserRouter>
@@ -72,7 +75,8 @@ const mapStateToProps = state => ({
   statistic: state.data.statistic,
   teem: state.data.teem,
   map: state.data.map,
-  news: state.data.news
+  news: state.data.news,
+  youtube: state.data.youtube
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
