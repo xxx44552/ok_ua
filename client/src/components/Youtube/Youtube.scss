@@ -3,6 +3,7 @@
 .yt-slider {
     width: 1000px;
     margin: 0 auto;
+    margin-bottom: 60px;
 
     &__element {
         width: 308px;
@@ -32,6 +33,15 @@
             background: url('../../img/youtube-2.png') no-repeat;
         }
 
+        a {
+            color: #000;
+            // opacity: .7;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
         .fa-youtube {
             font-size: 70px;
             opacity: .5;
@@ -44,6 +54,11 @@
                 color: #FF0000;
                 opacity: 1;
             }
+        }
+
+        a {
+            color: #000;
+            opacity: .5;
         }
     }
 
@@ -67,7 +82,10 @@
     }
 
     .slick-next {
-        transform: translateX(30%);
+        transform: translateX(160%);
+        position: absolute;
+        right: 10px;
+        top: 200px;
 
         &:before {
             content: url('../../img/youtube-right.png');
@@ -75,7 +93,10 @@
     }
 
     .slick-prev {
-        transform: translateX(-150%);
+        transform: translateX(-280%);
+        position: absolute;
+        left: 10px;
+        top: 200px;
 
         &:before {
             content: url('../../img/youtube-left.png');
@@ -143,5 +164,9 @@
         &__text {
             padding-right: 0;
         }
+    }
+
+    .slick-dots {
+        transform: translateY(160%);
     }
 }

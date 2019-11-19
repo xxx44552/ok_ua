@@ -37,11 +37,11 @@ class HeaderLogo extends React.Component {
 
   render() {
     return (
-        <div>
+        <div  className='header-wrap-logo'>
           <img alt='pic' src={this.props.formHeaderLogo ? this.props.formHeaderLogo : this.props.headerLogo}/>
           {
             this.state.error ?
-                <p>{this.state.error}</p> : null
+                <p className='admin-error'>{this.state.error}</p> : null
           }
           <input onChange={this.addFoto} type='file'/>
         </div>

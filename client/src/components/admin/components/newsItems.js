@@ -51,7 +51,7 @@ class NewsItems extends React.Component {
     console.log(items, '-------------')
     return (
         <React.Fragment>
-          <div>
+          <div className='admin-news-wrap'>
             {
               items.map(({id, text, img}) => {
                 return <div key={id} className='admin-news'>
@@ -62,17 +62,20 @@ class NewsItems extends React.Component {
               })
             }
           </div>
-          <textarea onChange={(e)=>this.setState({text: e.target.value})} placeholder='Text for news..'>
+          <div className='add-block'>
+            <p>Добавить новость</p>
+            <textarea onChange={(e)=>this.setState({text: e.target.value})} placeholder='Text for news..'>
 
           </textarea>
 
-          <input onChange={this.addFoto} type='file'/><br/>
-          <div className='admin-btn' onClick={()=> {
-            if(this.state.text && this.state.img && this.state.imgType) {
+            <input onChange={this.addFoto} type='file'/><br/>
+            <div className='admin-btn' onClick={()=> {
+              if(this.state.text && this.state.img && this.state.imgType) {
 
-              this.props.addNewsItem(this.state.text, this.state.img, this.state.imgType, items.length)
-            }
-          }}>Добавить новость</div>
+                this.props.addNewsItem(this.state.text, this.state.img, this.state.imgType, items.length)
+              }
+            }}>Добавить</div>
+          </div>
         </React.Fragment>
     )
   }

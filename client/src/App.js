@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import fetchDataAction from './fetchData';
 import { BrowserRouter, Route } from "react-router-dom";
-import Index from './components/login'
 import Admin from './components/admin'
 import Header from "./components/header/Header.js";
 import MainInfo from "./components/mainInfo/MainInfo";
+import Tasks from './components/tasks/Tasks';
 import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
 import Login from './components/login/';
 import News from './components/News/News';
 import Youtube from './components/Youtube/Youtube';
 import Footer from './components/Footer/Footer';
+import Spinner from './components/spinner'
+
 
 class App extends React.Component {
 
@@ -27,19 +29,21 @@ class App extends React.Component {
   componentDidMount() {
     const { fetchData } = this.props;
     fetchData();
+
   }
 
 
   render() {
     const { pending, error, tasks, teem, statistic, map } = this.props;
 
-    if (pending) return <p>Загрузка</p>;
+    if (pending) return <Spinner/>
     if (error) return <p>{error}</p>;
 
     return (
+
       <BrowserRouter>
         <Route exact={true} path='/login' render={() =>
-          <Index update={this.update} />
+          <Login />
         } />
         <Route exact={true} path='/admin' render={() =>
           <Admin />
@@ -50,10 +54,11 @@ class App extends React.Component {
               <div className="background-for-modal" >
                 <Header/>
                 <MainInfo/>
+                <Tasks/>
               </div>
             </div>
             <News news={this.props.news} />
-            <Youtube />
+            <Youtube youtube={this.props.youtube} />
             <SliderSection sliderState={this.state.sliders}/>
             <div className="wrapper">
               <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
@@ -74,7 +79,8 @@ const mapStateToProps = state => ({
   statistic: state.data.statistic,
   teem: state.data.teem,
   map: state.data.map,
-  news: state.data.news
+  news: state.data.news,
+  youtube: state.data.youtube
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

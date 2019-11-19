@@ -51,7 +51,7 @@ class ProjectItems extends React.Component {
     console.log(items)
     return (
         <React.Fragment>
-          <div>
+          <div className='admin-project-wrap'>
             {
               items.map(({id, title, text, img}) => {
                 return <div key={text} className='admin-project'>
@@ -63,15 +63,18 @@ class ProjectItems extends React.Component {
               })
             }
           </div>
-          <input onChange={(e)=>this.setState({title: e.target.value})} type='text' placeholder='Title for project..' /><br/>
-          <textarea onChange={(e)=>this.setState({text: e.target.value})} placeholder='Text for project..'></textarea>
-          <input onChange={this.addFoto} type='file'/><br/>
-          <div className='admin-btn' onClick={()=> {
-            if(this.state.title && this.state.text && this.state.img && this.state.imgType) {
+          <div className='add-block'>
+            <p>Добавить проект</p>
+            <input onChange={(e)=>this.setState({title: e.target.value})} type='text' placeholder='Title for project..' /><br/>
+            <textarea onChange={(e)=>this.setState({text: e.target.value})} placeholder='Text for project..'></textarea>
+            <input onChange={this.addFoto} type='file'/><br/>
+            <div className='admin-btn' onClick={()=> {
+              if(this.state.title && this.state.text && this.state.img && this.state.imgType) {
 
-              this.props.addProjectItem(this.state.title, this.state.text, this.state.img, this.state.imgType, items.length)
-            }
-          }}>Добавить проект</div>
+                this.props.addProjectItem(this.state.title, this.state.text, this.state.img, this.state.imgType, items.length)
+              }
+            }}>Добавить</div>
+          </div>
         </React.Fragment>
     )
   }

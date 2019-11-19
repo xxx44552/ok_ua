@@ -51,7 +51,7 @@ class TaskItems extends React.Component {
     console.log(items)
     return (
       <React.Fragment>
-        <div>
+        <div className='task-wrap'>
           {
             items.map(({id, text, img}) => {
               return <div key={text} className='admin-task'>
@@ -62,14 +62,17 @@ class TaskItems extends React.Component {
             })
           }
         </div>
-        <input onChange={(e)=>this.setState({text: e.target.value})} type='text' placeholder='Text for task..' /><br/>
-        <input onChange={this.addFoto} type='file'/><br/>
-        <div className='admin-btn' onClick={()=> {
-          if(this.state.text && this.state.img && this.state.imgType) {
+        <div className='add-block'>
+          <p>Добавить новое задание</p>
+          <input onChange={(e)=>this.setState({text: e.target.value})} type='text' placeholder='Text for task..' /><br/>
+          <input onChange={this.addFoto} type='file'/><br/>
+          <div className='admin-btn' onClick={()=> {
+            if(this.state.text && this.state.img && this.state.imgType) {
 
-            this.props.addTaskItem(this.state.text, this.state.img, this.state.imgType, items.length)
-          }
-        }}>Добавить задание</div>
+              this.props.addTaskItem(this.state.text, this.state.img, this.state.imgType, items.length)
+            }
+          }}>Добавить</div>
+        </div>
       </React.Fragment>
     )
   }

@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from 'react-responsive';
 
-const NewsSlider = () => {
+const NewsSlider = (props) => {
     const settings = {
         dots: true,
         infinite: true,
@@ -22,76 +22,70 @@ const NewsSlider = () => {
 
     return (
         <Slider className="slider" {...settings}>
-            <div className="slider__element">
-                <div className="slider__text-block">
-                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
-                        громадськості щодо проблем суспільства, навколишнього середовища та інших 
-                        існуючих екологічних, культурних проблем
-                    </p>
-
-                    <button className="slider__button">Дізнатися</button>
-                </div>
+            <div>
+                {props.news.map(item => (
+                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
+                        <div className="slider__text-block">
+                            <p className="slider__text">{item.text}</p>
+                            <button className="slider__button">Дізнатися</button>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            <div className="slider__element slider__element--green">
-                <div className="slider__text-block">
-                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
-                        громадськості щодо проблем суспільства, навколишнього середовища та інших 
-                        існуючих екологічних, культурних проблем
-                    </p>
-
-                    <button className="slider__button">Дізнатися</button>
-                </div>
+            <div>
+                {props.news.map(item => (
+                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
+                        <div className="slider__text-block">
+                            <p className="slider__text">{item.text}</p>
+                            <button className="slider__button">Дізнатися</button>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            <div className="slider__element slider__element--yellow">
-                <div className="slider__text-block">
-                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
-                        громадськості щодо проблем суспільства, навколишнього середовища та інших 
-                        існуючих екологічних, культурних проблем
-                    </p>
-
-                    <button className="slider__button">Дізнатися</button>
-                </div>
+            <div>
+                {props.news.map(item => (
+                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
+                        <div className="slider__text-block">
+                            <p className="slider__text">{item.text}</p>
+                            <button className="slider__button">Дізнатися</button>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            <div className="slider__element slider__element--blue">
-                <div className="slider__text-block">
-                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
-                        громадськості щодо проблем суспільства, навколишнього середовища та інших 
-                        існуючих екологічних, культурних проблем
-                    </p>
-
-                    <button className="slider__button">Дізнатися</button>
-                </div>
+            <div>
+                {props.news.map(item => (
+                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
+                        <div className="slider__text-block">
+                            <p className="slider__text">{item.text}</p>
+                            <button className="slider__button">Дізнатися</button>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            <div className="slider__element slider__element--black">
-                <div className="slider__text-block">
-                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
-                        громадськості щодо проблем суспільства, навколишнього середовища та інших 
-                        існуючих екологічних, культурних проблем
-                    </p>
-
-                    <button className="slider__button">Дізнатися</button>
-                </div>
+            <div>
+                {props.news.map(item => (
+                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
+                        <div className="slider__text-block">
+                            <p className="slider__text">{item.text}</p>
+                            <button className="slider__button">Дізнатися</button>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            <div className="slider__element slider__element--orange">
-                <div className="slider__text-block">
-                    <p className="slider__text slider__text--mob">Cприяння екологічній та культурній</p>
-                    <p className="slider__text">Cприяння екологічній та культурній просвіті та поліпшенню поінформованості 
-                        громадськості щодо проблем суспільства, навколишнього середовища та інших 
-                        існуючих екологічних, культурних проблем
-                    </p>
-
-                    <button className="slider__button">Дізнатися</button>
-                </div>
+            <div>
+                {props.news.map(item => (
+                    <div className="slider__element" key={item.id} style={{backgroundImage: `url(${item.img})`}}>
+                        <div className="slider__text-block">
+                            <p className="slider__text">{item.text}</p>
+                            <button className="slider__button">Дізнатися</button>
+                        </div>
+                    </div>
+                ))}
             </div>
         </Slider>
     );

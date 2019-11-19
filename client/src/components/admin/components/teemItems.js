@@ -56,7 +56,7 @@ class TeemItems extends React.Component {
     console.log(items)
     return (
         <React.Fragment>
-          <div>
+          <div className='admin-project-wrap'>
             {
               items.map(({id, img, prof, name, social}) => {
                 return <div key={id} className='admin-project'>
@@ -73,18 +73,21 @@ class TeemItems extends React.Component {
               })
             }
           </div>
-          <input onChange={(e)=>this.setState({name: e.target.value})} type='text' placeholder='Name..' /><br/>
-          <input onChange={(e)=>this.setState({prof: e.target.value})} type='text' placeholder='Prof..' /><br/>
-          <input onChange={(e)=>this.setState({social: {...this.state.social, fb: e.target.value}})} type='text' placeholder='fb..' /><br/>
-          <input onChange={(e)=>this.setState({social: {...this.state.social, instagram: e.target.value}})} type='text' placeholder='insta..' /><br/>
-          <input onChange={(e)=>this.setState({social: {...this.state.social, in: e.target.value}})} type='text' placeholder='in..' /><br/>
-          <input onChange={this.addFoto} type='file'/><br/>
-          <div className='admin-btn' onClick={()=> {
-            if(this.state.name && this.state.prof && this.state.img && this.state.imgType) {
+          <div className='add-block'>
+            <p>Добавить участника</p>
+            <input onChange={(e)=>this.setState({name: e.target.value})} type='text' placeholder='Name..' /><br/>
+            <input onChange={(e)=>this.setState({prof: e.target.value})} type='text' placeholder='Prof..' /><br/>
+            <input onChange={(e)=>this.setState({social: {...this.state.social, fb: e.target.value}})} type='text' placeholder='fb..' /><br/>
+            <input onChange={(e)=>this.setState({social: {...this.state.social, instagram: e.target.value}})} type='text' placeholder='insta..' /><br/>
+            <input onChange={(e)=>this.setState({social: {...this.state.social, in: e.target.value}})} type='text' placeholder='in..' /><br/>
+            <input onChange={this.addFoto} type='file'/><br/>
+            <div className='admin-btn' onClick={()=> {
+              if(this.state.name && this.state.prof && this.state.img && this.state.imgType) {
 
-              this.props.addTeemItem(this.state.name, this.state.prof, this.state.img, this.state.imgType, this.state.social, items.length)
-            }
-          }}>Добавить участника</div>
+                this.props.addTeemItem(this.state.name, this.state.prof, this.state.img, this.state.imgType, this.state.social, items.length)
+              }
+            }}>Добавить</div>
+          </div>
         </React.Fragment>
     )
   }
