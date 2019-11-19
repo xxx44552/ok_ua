@@ -23,7 +23,7 @@
         border-radius: 3px
         border: 1px solid grey
         display: inline-block
-        margin-top: 20px
+        margin-top: 10px
         cursor: pointer
         transition: all .2s
 
@@ -34,6 +34,7 @@
         margin-top: 10px
         width: 70%
         height: 100px
+        padding: 10px
 
 
     label
@@ -68,10 +69,156 @@
         display: flex
         flex-direction: column
         align-items: center
+        background-color: #E6F6FD
+
+        img
+            max-width: 100px
 
         p
             text-align: center
             margin: 10px 0
+
+    .add-block
+        padding: 10px
+        border-radius: 3px
+        border: 1px solid grey
+        background-color: #DCDCDC
+        margin: 20px 0
+        max-width: 500px
+
+        .admin-btn
+
+            &:hover
+                background-color: lighten(green, 10%)
+
+    .admin-news
+        max-width: 300px
+        padding: 10px
+        border-radius: 3px
+        border: 1px solid grey
+        display: flex
+        flex-direction: column
+        align-items: center
+        margin-right: 10px
+        margin-bottom: 10px
+
+        img
+            display: block
+            width: 100%
+
+    .admin-news-wrap
+        display: flex
+        flex-flow: row wrap
+        margin-top: 20px
+
+    .admin-youtube-wrap
+        display: flex
+        flex-flow: row wrap
+        margin-top: 20px
+
+        .admin-youtube
+            max-width: 500px
+            border: 1px solid grey
+            padding: 10px
+            border-radius: 3px
+            display: flex
+            flex-direction: column
+            align-items: center
+            margin-right: 10px
+            margin-bottom: 10px
+
+
+            iframe
+                width: 100% !important
+    p
+        margin: 10px 0
+
+    .admin-project-wrap
+        display: flex
+        flex-flow: row wrap
+        margin-top: 10px
+
+        .admin-project
+            max-width: 250px
+            display: flex
+            flex-direction: column
+            align-items: center
+            margin-right: 10px
+            margin-bottom: 10px
+            padding: 10px
+            border-radius: 3px
+            border: 1px solid grey
+
+            p
+                padding: 10px 0
+
+                &:first-of-type
+                    font-weight: bold
+
+            img
+                display: block
+                width: 100%
+
+    .admin-statistic-wrap
+        margin-top: 20px
+        display: flex
+        flex-flow: row wrap
+
+        .admin-statistic
+            max-width: 130px
+            padding: 10px
+            border-radius: 3px
+            border: 1px solid grey
+            display: flex
+            flex-direction: column
+            align-items: center
+            margin-right: 10px
+            margin-bottom: 10px
+            background-color: #E6F6FD
+
+            img
+                max-width: 75px
+                display: block
+
+            p
+                text-align: center
+
+    .admin-project-wrap
+        display: flex
+        flex-flow: row wrap
+        margin-top: 10px
+
+        .admin-project
+            padding: 10px
+            display: flex
+            flex-direction: column
+            align-items: center
+            width: 250px
+            background-color: #E6F6FD
+
+            img
+                width: 100%
+                display: block
+
+            p
+                padding: 0
+
+    .map-input
+        max-width: 500px
+        width: 100%
+
+    .foo-wrap
+        display: flex
+        align-items: flex-start
+
+    .footer-logo-wrap
+        display: flex
+        flex-direction: column
+
+        img
+            display: block
+            max-width: 100px
+            margin: 20px 0
 
 .admin-btns
     border-top: 2px solid gray

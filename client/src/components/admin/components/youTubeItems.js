@@ -22,10 +22,10 @@ class YoutubeItems extends React.Component {
 
   render() {
     const {items} = this.props;
-    console.log(items, '-------------')
+
     return (
         <React.Fragment>
-          <div>
+          <div className='admin-youtube-wrap'>
             {
               items.map(({id, text, link}) => {
                 return <div key={id} className='admin-youtube'>
@@ -36,16 +36,18 @@ class YoutubeItems extends React.Component {
               })
             }
           </div>
-          <textarea onChange={(e)=>this.setState({text: e.target.value})} placeholder='Text for slide..'></textarea>
-          <input type='text' onChange={(e)=>this.setState({link: e.target.value})} placeholder='Link..'/><br/>
+          <div className='add-block'>
+            <textarea onChange={(e)=>this.setState({text: e.target.value})} placeholder='Text for slide..'></textarea>
+            <input type='text' onChange={(e)=>this.setState({link: e.target.value})} placeholder='Link..'/><br/>
 
 
-          <div className='admin-btn' onClick={()=> {
-            if(this.state.text && this.state.link) {
+            <div className='admin-btn' onClick={()=> {
+              if(this.state.text && this.state.link) {
 
-              this.props.addYoutubeItem(this.state.text, this.state.link, items.length)
-            }
-          }}>Добавить слайд</div>
+                this.props.addYoutubeItem(this.state.text, this.state.link, items.length)
+              }
+            }}>Добавить</div>
+          </div>
         </React.Fragment>
     )
   }
