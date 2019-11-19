@@ -1,5 +1,22 @@
 .admin
-    padding: 0 20px 50px
+    padding: 20px 20px 75px
+
+    .admin-error
+        color: red
+        margin: 5px 0
+
+    .header-wrap
+        display: flex
+        align-items: flex-start
+        margin-bottom: 20px
+
+    input[type='file']
+        margin: 10px 0
+
+    input[type='text'], input[type='number']
+        line-height: 28px
+        padding: 0 10px
+        margin: 10px 0
 
     .admin-btn
         padding: 4px 10px
@@ -10,11 +27,59 @@
         cursor: pointer
 
     textarea
-        margin-top: 20px
+        margin-top: 10px
         width: 70%
         height: 100px
 
-    .admin-save
-        position: fixed
-        bottom: 20px
-        right: 20px
+
+    label
+        margin: 10px 20px 10px 0
+        display: inline-block
+        text-decoration: underline
+
+    .header-wrap-logo
+        display: flex
+        flex-direction: column
+
+        img
+            max-width: 300px
+            display: block
+            margin: 10px 0
+
+    .input-title
+        text-decoration: underline
+
+.admin-btns
+    border-top: 2px solid gray
+    padding: 20px 20px
+    position: fixed
+    bottom: 0
+    left: 0
+    background-color: #fff
+    display: flex
+    justify-content: space-between
+    width: 100%
+
+
+.close-admin
+    position: fixed
+    top: 0
+    right: 20px
+    font-size: 46px
+    cursor: pointer
+    color: red
+    font-weight: bold
+    background-color: #fff
+    text-decoration: none
+
+.admin-save, .logout
+    background-color: green
+    padding: 5px 20px
+    border: none
+    border-radius: 3px
+    color: #fff
+    cursor: pointer
+
+.logout
+    background-color: red
+    text-decoration: none
