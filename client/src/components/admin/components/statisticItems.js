@@ -52,7 +52,7 @@ class StatisticItems extends React.Component {
     console.log(items, '-------------')
     return (
         <React.Fragment>
-          <div>
+          <div className='admin-statistic-wrap'>
             {
               items.map(({id, text, count, img}) => {
                 return <div key={id} className='admin-statistic'>
@@ -64,16 +64,18 @@ class StatisticItems extends React.Component {
               })
             }
           </div>
-          <input onChange={(e)=>this.setState({text: e.target.value})} placeholder='Text for statistic..'/><br/>
-          <input onChange={(e)=>this.setState({count: e.target.value})} type='number' placeholder='Number for statistic..'/>
+          <div className='add-block'>
+            <p>Добавить блок</p>
+            <input onChange={(e)=>this.setState({text: e.target.value})} type='text' placeholder='Text for statistic..'/><br/>
+            <input onChange={(e)=>this.setState({count: e.target.value})} type='number' placeholder='Number for statistic..'/>
+            <input onChange={this.addFoto} type='file'/><br/>
+            <div className='admin-btn' onClick={()=> {
+              if(this.state.text && this.state.count && this.state.img && this.state.imgType) {
 
-          <input onChange={this.addFoto} type='file'/><br/>
-          <div className='admin-btn' onClick={()=> {
-            if(this.state.text && this.state.count && this.state.img && this.state.imgType) {
-
-              this.props.addStatisticItem(this.state.text, this.state.count, this.state.img, this.state.imgType, items.length)
-            }
-          }}>Добавить блок</div>
+                this.props.addStatisticItem(this.state.text, this.state.count, this.state.img, this.state.imgType, items.length)
+              }
+            }}>Добавить</div>
+          </div>
         </React.Fragment>
     )
   }

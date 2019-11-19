@@ -37,7 +37,8 @@ class FooterLogo extends React.Component {
 
   render() {
     return (
-        <div>
+        <div className='footer-logo-wrap'>
+          <p>Footer logo img</p>
           <img alt='pic' src={this.props.formFooterLogo ? this.props.formFooterLogo : this.props.footerLogo}/>
           {
             this.state.error ?

@@ -142,17 +142,19 @@ class Admin extends React.Component {
             <label>Map title - </label>
             <input onChange={(e)=>this.props.setMapTitle(e.target.value)} name='mapTitle' type='text' defaultValue={mapTitle} /><br/>
             <label>Coordinates - </label>
-            <input onChange={(e)=>this.props.setMapCoordinates(e.target.value)} name='coordinates' type='text' defaultValue={mapCoordinates} />
+            <input className='map-input' onChange={(e)=>this.props.setMapCoordinates(e.target.value)} name='coordinates' type='text' defaultValue={mapCoordinates} />
             <h2>Footer</h2>
-            <div>
+            <div className='foo-wrap'>
               <label>Footer address - </label>
               <textarea onChange={(e)=>this.props.setFooterAddress(e.target.value)} defaultValue={footerAddress}></textarea>
             </div>
             <FooterLogo/>
             <h2>Copy</h2>
-            <label>Copy text - </label>
-            <textarea onChange={(e)=>this.props.setCopy(e.target.value)} defaultValue={copy}></textarea>
-            <hr />
+            <div className='foo-wrap'>
+              <label>Copy text - </label>
+              <textarea onChange={(e)=>this.props.setCopy(e.target.value)} defaultValue={copy}></textarea>
+            </div>
+
             <div className="admin-btns">
               <a href='/logout' className="logout">Выйти</a>
               <a href='/' className="close-admin">×</a>
