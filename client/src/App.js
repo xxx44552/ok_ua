@@ -12,7 +12,9 @@ import OurProjects from './components/OurProjects';
 import Login from './components/login/';
 import News from './components/News/News';
 import Youtube from './components/Youtube/Youtube';
+import Footer from './components/Footer/Footer';
 import Spinner from './components/spinner'
+
 
 class App extends React.Component {
 
@@ -61,6 +63,7 @@ class App extends React.Component {
             <div className="wrapper">
               <OurProjects statistic={this.props.statistic} map={map} team={teem}/>
             </div>
+            <Footer />
           </>
         } />
       </BrowserRouter>
