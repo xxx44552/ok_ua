@@ -7,59 +7,10 @@
 
     &__element {
         width: 308px;
-        height: 245px;
+        height: 340px;
         margin: 0 auto;
-        background: url('../../img/youtube-1.png') no-repeat;
         position: relative;
         z-index: 1;
-
-        &--second {
-            background: url('../../img/youtube-2.png') no-repeat;
-        }
-        
-        &--third {
-            background: url('../../img/youtube-1.png') no-repeat;
-        }
-        
-        &--fourth {
-            background: url('../../img/youtube-2.png') no-repeat;
-        }
-    
-        &--fifth {
-            background: url('../../img/youtube-1.png') no-repeat;
-        }
-        
-        &--sixth {
-            background: url('../../img/youtube-2.png') no-repeat;
-        }
-
-        a {
-            color: #000;
-            // opacity: .7;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-
-        .fa-youtube {
-            font-size: 70px;
-            opacity: .5;
-            position: absolute;
-            top: 135px;
-            left: 33%;
-
-            &:hover {
-                cursor: pointer;
-                color: #FF0000;
-                opacity: 1;
-            }
-        }
-
-        a {
-            color: #000;
-            opacity: .5;
-        }
     }
 
     &__text-block {
@@ -82,7 +33,7 @@
     }
 
     .slick-next {
-        transform: translateX(160%);
+        transform: translate(160%, 70%);
         position: absolute;
         right: 10px;
         top: 110px;
@@ -93,7 +44,7 @@
     }
 
     .slick-prev {
-        transform: translateX(-280%);
+        transform: translate(-280%, 70%);
         position: absolute;
         left: 10px;
         top: 110px;
@@ -173,8 +124,8 @@
 
 .yb-wrap {
 
-
     iframe {
         width: 308px;
+        height: 245px;
     }
 }
