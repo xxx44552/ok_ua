@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Admin from './components/admin'
 import Header from "./components/header/Header.js";
 import MainInfo from "./components/mainInfo/MainInfo";
+import Tasks from "./components/tasks/Tasks";
 import SliderSection from "./components/SliderSection/SliderSection"
 import OurProjects from './components/OurProjects';
 import Login from './components/login/';
@@ -51,6 +52,7 @@ class App extends React.Component {
               <div className="background-for-modal" >
                 <Header/>
                 <MainInfo/>
+                <Tasks/>
               </div>
             </div>
             <News news={this.props.news} />
