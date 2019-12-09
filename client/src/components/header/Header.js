@@ -21,7 +21,10 @@ class Header extends React.Component{
         return(
             <div className="header-wrapper">
                 <div className="left-side">
-                    <img src={this.props.headerLogo}></img>
+                    <img className="burger" src='./static/burger.png' alt="burger"/>
+                    <img className="logo" src={this.props.headerLogo} alt="logo"/>
+                    <img className="logo-mobile" src='./static/logo-mobile.png' alt="logo-mobile"/>
+                    <img className="share" src='./static/share.png' alt="share"/>
                 </div>
                 <div className="right-side">
                     <div className="contact-info">
@@ -33,7 +36,7 @@ class Header extends React.Component{
                             <a className="soc-elem-youtube" href={this.props.youtube}>
                             </a>
                         </div>
-                        <div className="callback">
+                        <div className="callback" onClick="">
                             <span> {this.props.phone} </span>
                             <span className="text" onClick={this.callBackHandleOpen}>Зворотній дзвінок</span>
                             {!!this.state.callbackModalIsOpened &&
@@ -63,6 +66,7 @@ class Header extends React.Component{
                         }
                     </div>
                 </div>
+                <button className="contact-button">+3 8 (067) 434 56 52</button>
             </div>
         )
     }

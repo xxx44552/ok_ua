@@ -13,6 +13,12 @@
         width: 768px;
     }
 
+    @include tablet {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+
     .background-img {
         display: flex;
         width: 100%;
@@ -32,6 +38,24 @@
 
         @include laptop {
             display: flex;
+        }
+        @include tablet {
+            display: none;
+        }
+    }
+    .background-mobile-img {
+
+        display: none;
+
+        @include tablet {
+            display: flex;
+            width: 100%;
+            height: auto;
+        }
+        @include phone {
+            display: flex;
+            width: 100%;
+            height: auto;
         }
     }
 
@@ -64,6 +88,10 @@
         @include laptop {
             bottom: 0px;
             right: -56px;
+        }
+
+        @include tablet {
+            display: none;
         }
     }
 
@@ -110,6 +138,21 @@
     margin-top: 24px;
     padding: 0 25px 0 25px ;
 
+    @include tablet {
+        background: #E6F6FD;
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+    @include phone {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        background: #E6F6FD;
+        padding: 0;
+    }
+
     .title {
         font-family: 'Montserrat', sans-serif;
         font-style: normal;
@@ -120,6 +163,10 @@
         text-transform: uppercase;
 
         color: #000000;
+
+        @include tablet {
+            margin: 14px;
+        }
     }
 
     .text {
@@ -131,6 +178,10 @@
         align-items: center;
 
         color: #000000;
+
+        @include tablet {
+            margin: 17px 14px;
+        }
     }
 
     @include laptop{

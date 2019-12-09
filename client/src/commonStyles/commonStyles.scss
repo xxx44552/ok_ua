@@ -5,6 +5,9 @@
 @import './mixins.scss';
 
 
+body {
+    overflow-x: hidden;
+}
 .container-main {
     max-width: 1200px;
     margin: 0 auto;
@@ -13,6 +16,9 @@
         max-width: 768px;
     }
     @include tablet {
-        max-width: none;
+        max-width: 100%;
+    }
+    @include phone {
+        // max-width: 480px;
     }
 }

@@ -28,6 +28,7 @@ const JoinModal = (props) => {
                     </div>
                     <div className="join-buttons">
                         <button className="receive-notify">Отримувати оновлення</button>
+                        <button className="receive-notify-mobile" onClick={props.onClose}>Отримувати оновлення</button>
                         <button className="cancel" onClick={props.onClose}>Відмінити</button>
                     </div>
                 </div>
