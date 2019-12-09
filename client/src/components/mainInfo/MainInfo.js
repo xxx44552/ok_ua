@@ -12,7 +12,11 @@ class MainInfo extends React.Component{
 
     render() {
         return(
+            <>
             <div className="info-wrapper">
+                <img className="background-img" src="./static/background_laptop.png" alt="background-img"/>
+                <img className="background-tablet-img" src="./static/background_tablet.png" alt="background-tablet-img"/>
+                <img className="background-mobile-img" src="./static/background_mobile.png" alt="background-mobile-img"/>
                 <div className="text-wrapper">
                     <p className="title"> {this.props.title} </p>
                     <p className="text"> {this.props.text} </p>
@@ -26,6 +30,11 @@ class MainInfo extends React.Component{
                     )
                 }
             </div>
+            <div className="text-wrapper-tablet">
+                <p className="title"> {this.props.title} </p>
+                <p className="text"> {this.props.text} </p>
+            </div>
+            </>
         )
     }
 }

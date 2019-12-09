@@ -1,10 +1,20 @@
+@import '../../commonStyles/mixins.scss';
+
+
 .tasks-wrapper {
     display: flex;
     flex-direction: column;
     padding: 60px 44px;
     max-width: 1111px;
     z-index: 1;
-    margin: 0 auto;
+
+    @include laptop {
+        padding: 60px 25px;
+    }
+
+    @include tablet {
+        padding: 0 16px;
+    }
 
     .task-title {
         font-family: 'Montserrat', sans-serif;
@@ -20,6 +30,13 @@
         text-transform: uppercase;
 
         color: #00A3E6;
+
+        @include tablet {
+            justify-content: center;
+        }
+        @include phone {
+            justify-content: center;
+        }
     }
 
     .task-list {
@@ -31,12 +48,33 @@
         justify-content: space-between;
         margin-bottom: 46px;
 
+        @include laptop {
+            height: auto;
+        }
+        @include tablet {
+            justify-content: center;
+        }
+        @include phone {
+            justify-content: center;
+        }
+
         .task {
             display: flex;
             width: 280px;
             height: 70px;
             justify-content: space-between;
             margin: 11px 45px 11px 0 !important;
+
+            @include laptop {
+                width: 321px;
+                height: 59.51px;
+                margin: 11px 0 11px 0 !important;
+                justify-content: unset;
+            }
+            @include tablet {
+                margin-bottom: 20px !important;
+                height: 70px;
+            }
 
             img {
                 margin-right: 25px;
@@ -48,6 +86,11 @@
     .buttons {
         display: flex;
         justify-content: space-between;
+
+        @include tablet {
+            flex-direction: column;
+            align-items: center;
+        }
 
         .char-contrib {
 
@@ -62,6 +105,16 @@
             &:hover {
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 cursor: pointer;
+            }
+
+            @include laptop {
+                width: 220px;
+            }
+
+            @include tablet {
+                margin-bottom: 20px;
+                width: 288px;
+                height: 51px;
             }
 
         }
@@ -80,6 +133,16 @@
                 cursor: pointer;
             }
 
+            @include laptop {
+                width: 220px;
+            }
+
+            @include tablet {
+                margin-bottom: 20px;
+                width: 288px;
+                height: 51px;
+            }
+
         }
         .help {
 
@@ -94,6 +157,15 @@
             &:hover {
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 cursor: pointer;
+            }
+
+            @include laptop {
+                width: 220px;
+            }
+
+            @include tablet {
+                width: 288px;
+                height: 51px;
             }
 
         }

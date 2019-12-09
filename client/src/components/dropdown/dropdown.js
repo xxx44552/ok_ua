@@ -9,7 +9,7 @@ const DropDown = (props) => {
                 <p className="client-number">Ваш номер телефону</p>
                 <div className="actions">
                     <input className="input" placeholder="0679663223" />
-                    <button className="confirm-number" onClick={props.callBackOnClose}> <img/> </button>
+                    <button className="confirm-number" onClick={props.callBackOnClose}></button>
                 </div>
             </div>
         </div>

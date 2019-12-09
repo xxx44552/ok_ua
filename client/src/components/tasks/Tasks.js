@@ -30,7 +30,7 @@ class Tasks extends React.Component {
                         {this.props.tasks.map(({img,text,id}) => {
                             return(
                                 <div className="task" key={id}>
-                                    <img src={img}/>
+                                    <img src={img} alt="task-img"/>
                                     <p>{text}</p>
                                 </div>
                             )
