@@ -78,7 +78,7 @@ app.get('/logout', (req, res) => {
 //загрузка на сервер картинки
 function getImg(el, id, dir, typeImg, nameImg) {
   var imageData = el.replace(/^data:image\/\w+;base64,/, '');
-  fs.writeFile(`${__dirname}/../data/${dir}/${nameImg}${id?id:""}.${typeImg}`, imageData, {encoding: 'base64'}, function(err){
+  fs.writeFile(`${__dirname}/../data/${dir}/${nameImg}${id !== null?id:""}.${typeImg}`, imageData, {encoding: 'base64'}, function(err){
     if(err) {
       console.error(err)
     }
@@ -344,8 +344,11 @@ app.put("/api", function(req, res){
     }));
 
     for(let i = 0; i < taskData.length; i++) {
-      taskId += +1;
-
+      if(!isFinite(taskId)) {
+        taskId = 0
+      }else {
+        taskId += +1;
+      }
       var task = {
         id: taskId,
         text: taskData[i].text,
@@ -366,19 +369,25 @@ app.put("/api", function(req, res){
   if(newsData) {
 
     // находим максимальный id
-    var taskIdNews = Math.max.apply(Math,data.news.map(function(o){
+    var taskIdNews = Math.max.apply(Math, data.news.map(function(o){
       return o.id;
     }));
 
     for(let i = 0; i < newsData.length; i++) {
-      taskIdNews += +1;
+
+      if(!isFinite(taskIdNews)) {
+        taskIdNews = 0
+      }else {
+        taskIdNews += +1;
+      }
+
 
       var news = {
         id: taskIdNews,
         text: newsData[i].text,
         img: `img/news/img${taskIdNews}.${newsData[i].imgType}`
       };
-      data.news.push(news)
+      data.news.push(news);
       getImg(newsData[i].img, taskIdNews, 'img/news/', newsData[i].imgType, 'img');
     }
   }
@@ -397,7 +406,11 @@ app.put("/api", function(req, res){
     }));
 
     for(let i = 0; i < youtubeData.length; i++) {
-      taskIdYoutube += +1;
+      if(!isFinite(taskIdYoutube)) {
+        taskIdYoutube = 0
+      }else {
+        taskIdYoutube += +1;
+      }
 
       var youtube = {
         id: taskIdYoutube,
@@ -426,7 +439,11 @@ app.put("/api", function(req, res){
     }));
 
     for(let i = 0; i < projectData.length; i++) {
-      taskProjectId += +1;
+      if(!isFinite(taskProjectId)) {
+        taskProjectId = 0
+      }else {
+        taskProjectId += +1;
+      }
 
       var project = {
         id: taskProjectId,
@@ -454,7 +471,11 @@ app.put("/api", function(req, res){
     }));
 
     for(let i = 0; i < statisticData.length; i++) {
-      taskStatisticId += +1;
+      if(!isFinite(taskStatisticId)) {
+        taskStatisticId = 0
+      }else {
+        taskStatisticId += +1;
+      }
 
       var block = {
         id: taskStatisticId,
@@ -482,7 +503,11 @@ app.put("/api", function(req, res){
     }));
 
     for(let i = 0; i < teemData.length; i++) {
-      taskTeemId += +1;
+      if(!isFinite(taskTeemId)) {
+        taskTeemId = 0
+      }else {
+        taskTeemId += +1;
+      }
 
       var teem = {
         id: taskTeemId,

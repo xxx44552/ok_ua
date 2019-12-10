@@ -29,6 +29,7 @@ class App extends React.Component {
   componentDidMount() {
     const { fetchData } = this.props;
     fetchData();
+    document.title = 'Громадська організація «Окей Юей»'
   }
 
 
