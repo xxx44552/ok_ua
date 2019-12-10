@@ -5,6 +5,7 @@ import teamMate from './media/teammate.png';
 function TeamMateCard(props) {
     return (
         <div className="team__wrap">
+            <a name="about"></a>
             <div className="team__image-wrap"><img className="team__image" src={props.img}></img></div>
             <h3 className="team__name">{props.name}</h3>
             <p className="team__position">{props.position}</p>

@@ -44,6 +44,7 @@ const Youtube = (props) => {
                       <p className="yt-slider__text">{item.text}</p>
                   </div>
               </div>
+              <a name="projects"></a>
             </div>
           ))}
         </Slider>

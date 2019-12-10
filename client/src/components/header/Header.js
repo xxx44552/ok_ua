@@ -50,10 +50,10 @@ class Header extends React.Component{
                         </div>
                     </div>
                     <div className="header-menu">
-                        <a className="about" href="#top">Про нас</a>
-                        <a className="news" href="#top">Новини</a>
-                        <a className="projects" href="#top">Проекти</a>
-                        <a className="contacts" href="#top">Контакти</a>
+                        <a className="about" href="#about">Про нас</a>
+                        <a className="news" href="#news">Новини</a>
+                        <a className="projects" href="#projects">Проекти</a>
+                        <a className="contacts" href="#contacts">Контакти</a>
 
                         <button className="header-button" onClick={this.handleOpen}>Приєднатися</button>
 

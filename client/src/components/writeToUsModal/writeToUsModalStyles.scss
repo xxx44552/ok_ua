@@ -64,12 +64,13 @@
                 font-weight: normal;
                 font-size: 14px;
                 line-height: 17px;
-    
+                margin-bottom: 12px;
                 color: #00A3E6;
             }
     
             .full-name {
                 display: flex;
+                margin-bottom: 12px;
     
                 .name {
                     font-family: 'Montserrat Alternates', sans-serif;
@@ -97,6 +98,7 @@
                         box-sizing: border-box;
                         border-radius: 2px;
                         padding: 2px;
+                        margin-top: 5px;
                     }
                 }
                 .surname {
@@ -124,6 +126,7 @@
                         box-sizing: border-box;
                         border-radius: 2px;
                         padding: 2px;
+                        margin-top: 5px;
                     }
                 }
             }
@@ -137,6 +140,7 @@
                 line-height: 12px;
                 color: #C4C4C4;
                 margin-right: 12px;
+                margin-bottom: 12px;
 
                 ::placeholder {
                     font-family: 'Montserrat Alternates', sans-serif;
@@ -155,6 +159,7 @@
                     box-sizing: border-box;
                     border-radius: 2px;
                     padding: 3px;
+                    margin-top: 5px;
                 }
             }
     
@@ -187,6 +192,7 @@
                     box-sizing: border-box;
                     border-radius: 2px;
                     padding: 3px;
+                    margin-top: 5px;
                 }
             }
             .massage-text {

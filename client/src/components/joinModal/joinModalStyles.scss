@@ -58,7 +58,7 @@
                 font-weight: normal;
                 font-size: 14px;
                 line-height: 17px;
-    
+                margin-bottom: 12px;
                 color: #00A3E6;
 
                 @include tablet {
@@ -70,6 +70,7 @@
     
             .full-name {
                 display: flex;
+                margin-bottom: 12px;
 
                 @include tablet {
                     flex-direction: column;
@@ -90,9 +91,7 @@
                     }
                     
                     p{
-                        @include tablet {
-                            margin-bottom: 5px;
-                        }
+                        margin-bottom: 5px;
                     }
                     ::placeholder {
                         font-family: 'Montserrat Alternates', sans-serif;
@@ -111,6 +110,7 @@
                         box-sizing: border-box;
                         border-radius: 2px;
                         padding: 2px;
+                        font-size: 14px;
 
                         @include tablet {
                             width: 268px;
@@ -126,9 +126,7 @@
                     color: #C4C4C4;
 
                     p{
-                        @include tablet {
-                            margin-bottom: 5px;
-                        }
+                        margin-bottom: 5px;
                     }
 
                     ::placeholder {
@@ -148,6 +146,7 @@
                         box-sizing: border-box;
                         border-radius: 2px;
                         padding: 2px;
+                        font-size: 14px;
 
                         @include tablet {
                             width: 268px;
@@ -165,6 +164,7 @@
                 line-height: 12px;
                 color: #C4C4C4;
                 margin-right: 12px;
+                margin-bottom: 12px;
 
                 @include tablet {
                     flex-direction: column;
@@ -172,9 +172,7 @@
                 }
 
                 p{
-                    @include tablet {
-                        margin-bottom: 5px;
-                    }
+                    margin-bottom: 5px;
                 }
 
                 ::placeholder {
@@ -194,6 +192,7 @@
                     box-sizing: border-box;
                     border-radius: 2px;
                     padding: 2px;
+                    font-size: 14px;
 
                     @include tablet {
                         width: 268px;
@@ -220,9 +219,7 @@
                 }
 
                 p{
-                    @include tablet {
-                        margin-bottom: 5px;
-                    }
+                    margin-bottom: 5px;
                 }
 
                 ::placeholder {
@@ -242,6 +239,7 @@
                     box-sizing: border-box;
                     border-radius: 2px;
                     padding: 2px;
+                    font-size: 14px;
 
                     @include tablet {
                         width: 268px;
