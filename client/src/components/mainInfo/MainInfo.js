@@ -14,7 +14,7 @@ class MainInfo extends React.Component{
         return(
             <>
             <div className="info-wrapper">
-                <img className="background-img" src="./static/background_laptop.png" alt="background-img"/>
+                <img className="background-img" src="./static/background.png" alt="background-img"/>
                 <img className="background-tablet-img" src="./static/background_tablet.png" alt="background-tablet-img"/>
                 <img className="background-mobile-img" src="./static/background_mobile.png" alt="background-mobile-img"/>
                 <div className="text-wrapper">

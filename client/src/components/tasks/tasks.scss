@@ -7,6 +7,7 @@
     padding: 60px 44px;
     max-width: 1111px;
     z-index: 1;
+    margin: 0 auto;
 
     @include laptop {
         padding: 60px 25px;
@@ -101,6 +102,7 @@
             border-radius: 3px;
             border: 0;
             outline: 0 !important;
+            margin-right: 127px;
         
             &:hover {
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -109,12 +111,14 @@
 
             @include laptop {
                 width: 220px;
+                margin-right: 29px;
             }
 
             @include tablet {
                 margin-bottom: 20px;
                 width: 288px;
                 height: 51px;
+                margin-right: 29px;
             }
 
         }
@@ -127,6 +131,7 @@
             border-radius: 3px;
             border: 0;
             outline: 0 !important;
+            margin-right: 127px;
         
             &:hover {
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -135,12 +140,14 @@
 
             @include laptop {
                 width: 220px;
+                margin-right: 29px;
             }
 
             @include tablet {
                 margin-bottom: 20px;
                 width: 288px;
                 height: 51px;
+                margin-right: 29px;
             }
 
         }
@@ -161,6 +168,7 @@
 
             @include laptop {
                 width: 220px;
+                
             }
 
             @include tablet {
