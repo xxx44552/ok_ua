@@ -5,10 +5,12 @@ const bodyParser = require("body-parser");
 const passport = require('passport');
 var session = require('express-session');
 const FileStore = require('session-file-store')(session);
+var nodemailer = require('nodemailer');
 
 const config = require('./config');
 
 const app = express();
+var jsonParser = bodyParser.json();
 
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
@@ -576,6 +578,51 @@ app.put("/api", function(req, res){
 app.get("/*", function(req, res){
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'webinme.ru@gmail.com',
+    pass: '1234567vV'
+  }
+});
+
+
+app.post('/mail', jsonParser, function (request, response) {
+  // if(!request.body.email || !request.body.firstName || !request.body.lastName) {
+  //   return response.sendStatus(400);
+  // }
+  console.log(request.body);
+  console.log(request.body.mess, '----------');
+
+  var file = fs.readFileSync("../data/data.json", "utf8");
+  var data = JSON.parse(file);
+  var sendEmail = data.email;
+
+  console.log(sendEmail)
+
+  var mailOptions = {
+    from: 'webinme.ru@gmail.com',
+    to: sendEmail,
+    subject: 'Сообщение с вашего сайта - okua.in.ua',
+    text: `Сообщение от: ${request.body.firstName}`,
+    html: ` <h1>${request.body.mess ? 'Обратная связь' : 'Получать обновления'}</h1>   
+            <p>Имя: ${request.body.firstName}</p>
+            <p>Фамилия: ${request.body.lastName}</p>
+            <p>Телефон: ${request.body.phone}</p>
+             ${request.body.mess ? `<p>Сообщение: ${request.body.mess}</p>` : ''}
+            <p>Почта: ${request.body.email}</p>`
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      response.redirect('/err-mail')
+    } else {
+      response.redirect('/')
+    }
+  });
+
+})
 
 app.listen(config.port, function () {
   console.log('Start server on ' + config.port + ' port...')
