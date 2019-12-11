@@ -606,12 +606,12 @@ app.post('/mail', jsonParser, function (request, response) {
     to: sendEmail,
     subject: 'Сообщение с вашего сайта - okua.in.ua',
     text: `Сообщение от: ${request.body.firstName}`,
-    html: ` <h1>${request.body.mess ? 'Обратная связь' : 'Получать обновления'}</h1>   
-            <p>Имя: ${request.body.firstName}</p>
-            <p>Фамилия: ${request.body.lastName}</p>
-            <p>Телефон: ${request.body.phone}</p>
-             ${request.body.mess ? `<p>Сообщение: ${request.body.mess}</p>` : ''}
-            <p>Почта: ${request.body.email}</p>`
+    html: ` <h1>${request.body.mess ? 'Обратная связь' : 'Получать обновления'}</h1>
+            ${request.body.firstName ? `<p>Имя: ${request.body.firstName}</p>` : ''}
+            ${request.body.lastName ? `<p>Фамилия: ${request.body.lastName}</p>` : ''}
+            ${request.body.phone ? `<p>Телефон: ${request.body.phone}</p>${request.body.phoneInfo ? `<span>${request.body.phoneInfo}<span/>` : ''}` : ''}
+            ${request.body.mess ? `<p>Сообщение: ${request.body.mess}</p>` : ''}
+            ${request.body.email ? `<p>Почта: ${request.body.email}</p>` : ''}`
   };
 
   transporter.sendMail(mailOptions, function(error, info){

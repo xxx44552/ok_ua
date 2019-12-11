@@ -7,6 +7,7 @@ const JoinModal = (props) => {
 
 
     const [status, setStatus] = useState(false);
+    const [err, setErr] = useState({});
 
     const {
         onChangeUserEmail,
@@ -20,7 +21,14 @@ const JoinModal = (props) => {
 
 
     function sendMail(e) {
+        setErr({
+            'border-color': 'red'
+        });
+
         e.preventDefault();
+
+        if(!firstName || !userEmail) return;
+
         const form = {
             firstName,
             lastName,
@@ -50,7 +58,7 @@ const JoinModal = (props) => {
                         <div className="full-name">
                             <div className="name">
                                 <p>Ім'я</p>
-                                <input onChange={onChangeFirstName} defaultValue={props.firstName} className="name-input" placeholder="Ім'я"/>
+                                <input onChange={onChangeFirstName} defaultValue={props.firstName} style={firstName ? null : err} className="name-input" placeholder="Ім'я"/>
                             </div>
                             <div className="surname">
                                 <p>Прізвище</p>
@@ -63,7 +71,7 @@ const JoinModal = (props) => {
                         </div>
                         <div className="email">
                             <p>E-mail</p>
-                            <input onChange={onChangeUserEmail} defaultValue={props.email} className="email-input" placeholder="E-mail"/>
+                            <input onChange={onChangeUserEmail} defaultValue={props.email} style={userEmail ? null : err} className="email-input" placeholder="E-mail"/>
                         </div>
                         {
                             status ?

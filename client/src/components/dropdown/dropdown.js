@@ -4,8 +4,8 @@ import useFeedBack from "../../customHooks/useFeedback";
 
 const DropDown = (props) => {
 
-
     const [status, setStatus] = useState(false);
+    const [err, setErr] = useState({});
 
     const {
         onChangeUserPhone,
@@ -13,10 +13,19 @@ const DropDown = (props) => {
 
 
     function sendMail(e) {
+        setErr({
+            'border-color': 'red'
+        });
+
         e.preventDefault();
+
+        if(!userPhone) return;
+
         const form = {
-            phone: userPhone
+            phone: userPhone,
+            phoneInfo: 'Заказ обратного звонка'
         };
+
         fetch('/mail', {
             method: 'post',
             body: JSON.stringify(form),
@@ -41,7 +50,7 @@ const DropDown = (props) => {
                         <p>Отправка...</p>
                         :
                         <>
-                            <input onChange={onChangeUserPhone} className="input" placeholder="0679663223" />
+                            <input onChange={onChangeUserPhone} style={userPhone ? null : err} className="input" placeholder="0679663223" />
                             <button className="confirm-number"></button>
                         </>
                     }

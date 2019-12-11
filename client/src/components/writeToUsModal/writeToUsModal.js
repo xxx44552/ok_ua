@@ -4,6 +4,7 @@ import useFeedBack from "../../customHooks/useFeedback";
 
 const WriteToUsModal = (props) => {
     const [status, setStatus] = useState(false);
+    const [err, setErr] = useState({});
 
     const {
         onChangeUserEmail,
@@ -19,7 +20,15 @@ const WriteToUsModal = (props) => {
 
 
     function sendMail(e) {
+
+        setErr({
+            'border-color': 'red'
+        });
+
         e.preventDefault();
+
+        if(!firstName || !userEmail) return;
+
         const form = {
             firstName,
             lastName,
@@ -48,7 +57,7 @@ const WriteToUsModal = (props) => {
                     <div className="full-name">
                         <div className="name">
                             <p>Ім'я</p>
-                            <input onChange={onChangeFirstName} className="name-input" placeholder="Ім'я" />
+                            <input onChange={onChangeFirstName} style={firstName ? null : err} className="name-input" placeholder="Ім'я" />
                         </div>
                         <div className="surname">
                             <p>Прізвище</p>
@@ -61,7 +70,7 @@ const WriteToUsModal = (props) => {
                     </div>
                     <div className="email">
                         <p>E-mail</p>
-                        <input onChange={onChangeUserEmail} className="email-input" placeholder="E-mail" />
+                        <input onChange={onChangeUserEmail} style={userEmail ? null : err} className="email-input" placeholder="E-mail" />
                     </div>
                     <div className="massage-text">
                         <textarea onChange={onChangeUserMess} className="massage-text-area" placeholder="Текст повідомлення" />
@@ -84,7 +93,7 @@ const WriteToUsModal = (props) => {
                     <div className="full-name-mobile">
                         <div className="name-mobile">
                             <p className="contact-item-title">Ім'я</p>
-                            <input onChange={onChangeFirstName} className="name-input-mobile" placeholder="Ім'я" />
+                            <input onChange={onChangeFirstName} style={firstName ? null : err} className="name-input-mobile" placeholder="Ім'я" />
                         </div>
                         <div className="surname-mobile">
                             <p className="contact-item-title">Прізвище</p>
@@ -97,7 +106,7 @@ const WriteToUsModal = (props) => {
                     </div>
                     <div className="email-mobile">
                         <p className="contact-item-title">E-mail</p>
-                        <input onChange={onChangeUserEmail} className="email-input-mobile" placeholder="E-mail" />
+                        <input onChange={onChangeUserEmail} style={userEmail ? null : err} className="email-input-mobile" placeholder="E-mail" />
                     </div>
                     <div className="massage-text-mobile">
                         <textarea onChange={onChangeUserMess} className="massage-text-area-mobile" placeholder="Текст повідомлення" />
