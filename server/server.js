@@ -602,7 +602,7 @@ app.post('/mail', jsonParser, function (request, response) {
   console.log(sendEmail)
 
   var mailOptions = {
-    from: 'webinme.ru@gmail.com',
+    from: 'krokoadv@gmail.com',
     to: sendEmail,
     subject: 'Сообщение с вашего сайта - okua.in.ua',
     text: `Сообщение от: ${request.body.firstName}`,
