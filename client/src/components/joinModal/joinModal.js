@@ -27,7 +27,7 @@ const JoinModal = (props) => {
 
         e.preventDefault();
 
-        if(!firstName || !userEmail) return;
+        if(!firstName || !userEmail || !userPhone) return;
 
         const form = {
             firstName,
@@ -67,7 +67,7 @@ const JoinModal = (props) => {
                         </div>
                         <div className="phone-number">
                             <p>Ваш номер телефону</p>
-                            <input onChange={onChangeUserPhone} defaultValue={props.phone} className="phone-input" placeholder="Ваш номер телефону"/>
+                            <input onChange={onChangeUserPhone} defaultValue={props.phone} style={userPhone ? null : err} className="phone-input" placeholder="Ваш номер телефону"/>
                         </div>
                         <div className="email">
                             <p>E-mail</p>

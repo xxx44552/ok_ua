@@ -27,7 +27,7 @@ const WriteToUsModal = (props) => {
 
         e.preventDefault();
 
-        if(!firstName || !userEmail) return;
+        if(!firstName || !userEmail || !userPhone) return;
 
         const form = {
             firstName,
@@ -66,7 +66,7 @@ const WriteToUsModal = (props) => {
                     </div>
                     <div className="phone-number">
                         <p>Ваш номер телефону</p>
-                        <input onChange={onChangeUserPhone} className="phone-input" placeholder="Ваш номер телефону" />
+                        <input onChange={onChangeUserPhone} style={userPhone ? null : err} className="phone-input" placeholder="Ваш номер телефону" />
                     </div>
                     <div className="email">
                         <p>E-mail</p>
@@ -102,7 +102,7 @@ const WriteToUsModal = (props) => {
                     </div>
                     <div className="phone-number-mobile">
                         <p className="contact-item-title">Ваш номер телефону</p>
-                        <input onChange={onChangeUserPhone} className="phone-input-mobile" placeholder="Ваш номер телефону" />
+                        <input onChange={onChangeUserPhone} style={userPhone ? null : err} className="phone-input-mobile" placeholder="Ваш номер телефону" />
                     </div>
                     <div className="email-mobile">
                         <p className="contact-item-title">E-mail</p>
