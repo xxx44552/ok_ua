@@ -11,6 +11,7 @@
 
     @include laptop {
         padding: 60px 25px;
+        max-width: 768px;
     }
 
     @include tablet {

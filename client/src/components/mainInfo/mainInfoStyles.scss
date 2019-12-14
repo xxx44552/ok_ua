@@ -134,9 +134,10 @@
 .text-wrapper-tablet {
     display: none;
     flex-direction: column;
-    width: 717px;
-    margin-top: 24px;
     padding: 0 25px 0 25px ;
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 24px 0 0 0;
 
     @include tablet {
         background: #E6F6FD;

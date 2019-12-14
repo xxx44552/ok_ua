@@ -38,7 +38,7 @@ class Header extends React.Component{
                         </div>
                         <div className="callback" onClick="">
                             <span> {this.props.phone} </span>
-                            <span className="text" onClick={this.callBackHandleOpen}>Зворотній дзвінок</span>
+                            <span className="text" onClick={this.state.callbackModalIsOpened ? this.callBackHandleClose : this.callBackHandleOpen}>Зворотній дзвінок</span>
                             {!!this.state.callbackModalIsOpened &&
                             (
                                 <DropDown
