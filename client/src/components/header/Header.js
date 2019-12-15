@@ -5,26 +5,43 @@ import DropDown from '../dropdown/dropdown'
 import JoinModal from '../joinModal/joinModal'
 
 
-class Header extends React.Component{
+class Header extends React.Component {
 
-        state = {
-            modalIsOpened: false,
-            callbackModalIsOpened: false
-        };
+    state = {
+        modalIsOpened: false,
+        callbackModalIsOpened: false,
+        menuBarIsOpened: false,
+    };
 
-    handleOpen = () => this.setState({ modalIsOpened: true })
-    handleClose = () => this.setState({ modalIsOpened: false })
-    callBackHandleOpen = () => this.setState({ callbackModalIsOpened: true })
-    callBackHandleClose = () => this.setState({ callbackModalIsOpened: false })
+    handleOpen = () => this.setState({ modalIsOpened: true });
+    handleClose = () => this.setState({ modalIsOpened: false });
+    callBackHandleOpen = () => this.setState({ callbackModalIsOpened: true });
+    callBackHandleClose = () => this.setState({ callbackModalIsOpened: false });
+    handleOpenMenuBar = () => this.setState({ menuBarIsOpened: true });
+    handleCloseMenuBar = () => this.setState({ menuBarIsOpened: false });
 
     render() {
-        return(
+        return (
             <div className="header-wrapper">
                 <div className="left-side">
-                    <img className="burger" src='./static/burger.png' alt="burger"/>
-                    <img className="logo" src={this.props.headerLogo} alt="logo"/>
-                    <img className="logo-mobile" src='./static/logo-mobile.png' alt="logo-mobile"/>
-                    <img className="share" src='./static/share.png' alt="share"/>
+                    <img className="burger" onClick={this.handleOpenMenuBar} src='./static/burger.png' alt="burger" />
+                    {!!this.state.menuBarIsOpened &&
+                        (
+                            <div className="menu-bar">
+                                <img className="menu-bar-icon" onClick={this.handleCloseMenuBar} src='./static/closeIcon.png' alt="closeIcon" />
+                                <div className="menu-list">
+                                    <a className="menu-item" href="#about">Про нас</a>
+                                    <a className="menu-item" href="#news">Новини</a>
+                                    <a className="menu-item" href="#projects">Проекти</a>
+                                    <a className="menu-item" href="#contacts-adaptive">Контакти</a>
+                                    <a className="menu-item">Приєднатися</a>
+                                </div>
+                            </div>
+                        )
+                    }
+                    <img className="logo" src={this.props.headerLogo} alt="logo" />
+                    <img className="logo-mobile" src='./static/logo-mobile.png' alt="logo-mobile" />
+                    <img className="share" src='./static/share.png' alt="share" />
                 </div>
                 <div className="right-side">
                     <div className="contact-info">
@@ -40,13 +57,13 @@ class Header extends React.Component{
                             <span> {this.props.phone} </span>
                             <span className="text" onClick={this.state.callbackModalIsOpened ? this.callBackHandleClose : this.callBackHandleOpen}>Зворотній дзвінок</span>
                             {!!this.state.callbackModalIsOpened &&
-                            (
-                                <DropDown
-                                className="dropdown"
-                                callBackOnClose={this.callBackHandleClose}
-                                />
-                            )
-                        }
+                                (
+                                    <DropDown
+                                        className="dropdown"
+                                        callBackOnClose={this.callBackHandleClose}
+                                    />
+                                )
+                            }
                         </div>
                     </div>
                     <div className="header-menu">
@@ -60,7 +77,7 @@ class Header extends React.Component{
                         {!!this.state.modalIsOpened &&
                             (
                                 <JoinModal
-                                onClose={this.handleClose}
+                                    onClose={this.handleClose}
                                 />
                             )
                         }
@@ -74,10 +91,10 @@ class Header extends React.Component{
 
 export default connect(
     state => ({
-      headerLogo: state.data.header.logo,
-      phone: state.data.tel,
-      fb: state.data.social.fb,
-      insta: state.data.social.insta,
-      youtube: state.data.social.youtube,
+        headerLogo: state.data.header.logo,
+        phone: state.data.tel,
+        fb: state.data.social.fb,
+        insta: state.data.social.insta,
+        youtube: state.data.social.youtube,
     })
 )(Header)

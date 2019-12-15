@@ -8,6 +8,7 @@ function Footer(props) {
         <>
             <section className="section footer__section">
                 <div className="section__container footer__container">
+                    <a name="contacts"></a>
                     <div className="section__row footer__row">
                         <div className="section__col footer__col footer__col-1">
                             <h4 className="footer__article footer__article--left">Контакти</h4>
@@ -88,6 +89,7 @@ function Footer(props) {
             </section>
             <section className="section footer__section--adaptive">
                 <div className="section__container">
+                    <a name="contacts-adaptive"></a>
                     <div className="section__row">
                         <div className="section__col section__col--w-100">
                             <SectionArticle textContent={'Контакти'} />

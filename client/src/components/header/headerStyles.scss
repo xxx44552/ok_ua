@@ -37,6 +37,7 @@
         display: flex;
         align-items: center;
         text-transform: uppercase;
+        position: relative;
 
         @include tablet {
             width: 100%;
@@ -64,6 +65,95 @@
             //     margin-left: 14px;
             //     margin-right: 75px;
             // }
+        }
+        .menu-bar {
+            display: none;
+            @include tablet {
+
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                width: 162px;
+                height: 260px;
+                left: 30px;
+                top: 20px;
+                background: #FFFFFF;
+                z-index: 1000;
+
+                .menu-bar-icon {
+                    width: 17.5px;
+                    height: 17.5px;
+                    position: absolute;
+                    top: 9px;
+                    left: 9px;
+                }
+
+                .menu-list {
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 30px;
+
+                    .menu-item {
+                        height: 42px;
+                        font-family: 'Montserrat Alternates', sans-serif;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 48px;
+                        align-items: center;
+                        padding-left: 27px;
+                        color: #000000;
+                        text-decoration: none;
+
+                        &:active {
+                            background: #E6F6FD;
+                        }
+                    }
+                }
+            }
+            @include phone {
+
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                width: 162px;
+                height: 260px;
+                left: 30px;
+                top: 20px;
+                background: #FFFFFF;
+                z-index: 1000;
+
+                .menu-bar-icon {
+                    width: 17.5px;
+                    height: 17.5px;
+                    position: absolute;
+                    top: 9px;
+                    left: 9px;
+                }
+
+                .menu-list {
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 30px;
+
+                    .menu-item {
+                        height: 42px;
+                        font-family: 'Montserrat Alternates', sans-serif;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 48px;
+                        align-items: center;
+                        padding-left: 27px;
+                        color: #000000;
+                        text-decoration: none;
+
+                        &:active {
+                            background: #E6F6FD;
+                        }
+                    }
+                }
+            }
         }
         .logo {
             @include laptop {
